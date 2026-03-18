@@ -35,7 +35,8 @@ pero si te explota es asunto tuyo.
 
 | Archivo | Post de Origen | Generado por | Fecha |
 |---|---|---|---|
-| `imagen_dia_mistral.php` | Snippet #001: El Experimento de Autorreferencia | Mistral 2026 | 2026-03 |
+| `imagen_dia_mistral.php` | Snippet #001: El Experimento de Autorreferencia | Mistral 2026 | 2026-03 | Con bugs
+| `imagen_dia_claude.php` | Snippet #001: El Experimento de Autorreferencia | Claude | 2026-03 | Con bugs
 
 *(La tabla crece con cada nuevo post)*
 
