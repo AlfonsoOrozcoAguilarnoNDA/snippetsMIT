@@ -234,7 +234,9 @@ $engine_get = isset($_GET['engine']) ? $_GET['engine'] : '';
                         <option value="Grok" <?php if ($engine_get === 'Grok') echo 'selected'; ?>>Grok</option>
                         <option value="Gemini" <?php if ($engine_get === 'Gemini') echo 'selected'; ?>>Gemini</option>
                         <option value="Leonardo" <?php if ($engine_get === 'Leonardo') echo 'selected'; ?>>Leonardo</option>
-                        <option value="Mistral" <?php if ($engine_get === 'Mistral') echo 'selected'; ?>>Mistral</option>
+						<option value="Venice.Ai" <?php if ($engine_get === 'Venice.Ai') echo 'selected'; ?>>Venice.Ai</option>
+						<option value="Runway" <?php if ($engine_get === 'Runway') echo 'selected'; ?>>Runway</option>
+                        <option value="https://www.craiyon.com/" <?php if ($engine_get === 'https://www.craiyon.com/') echo 'selected'; ?>>https://www.craiyon.com/</option>
                     </select>
                 </div>
                 <div class="form-group mr-3">
@@ -262,8 +264,10 @@ $engine_get = isset($_GET['engine']) ? $_GET['engine'] : '';
                             <option value="">Seleccionar...</option>
                             <option value="Grok">Grok</option>
                             <option value="Gemini">Gemini</option>
-                            <option value="Leonardo">Leonardo</option>
-                            <option value="Mistral">Mistral</option>
+                            <option value="Leonardo">Leonardo</option>                            
+							<option value="Venice.Ai">Venice.Ai</option>                            
+							<option value="Runway">Runway</option>
+							<option value="https://www.craiyon.com/">craiyon.com</option>
                         </select>
                     </div>
                     <div class="form-group">
