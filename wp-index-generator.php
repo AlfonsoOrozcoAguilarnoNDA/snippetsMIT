@@ -1,6 +1,7 @@
 <?php
 /**
  * WordPress Index Generator
+ * https://vibecodingmexico.com/snippet-4-el-no-plugin-de-wordpress/
  * Genera un índice cronológico de lectura organizado por categorías.
  * * @author    Alfonso Orozco Aguilar
  *   @coauthor  Gemini, modificado a mano.
