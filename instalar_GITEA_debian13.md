@@ -29,7 +29,7 @@ URL de Gitea:         https://git.tu-dominio.com
 > **Anótala en papel si hace falta.**
 
 ---
-Hay una versión 2, te sugiero que uses esa. Alfinal de este archivo vienen los cambios quese hicieron contra versión 2
+Hay una versión 2, te sugiero que uses esa. Al final de este archivo vienen los cambios que se hicieron contra versión 2
 ---
 
 ## 1. Apuntar el Subdominio
