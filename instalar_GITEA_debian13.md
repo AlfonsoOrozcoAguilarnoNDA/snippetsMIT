@@ -29,7 +29,11 @@ URL de Gitea:         https://git.tu-dominio.com
 > **Anótala en papel si hace falta.**
 
 ---
-Hay una versión 2, te sugiero que uses esa. Al final de este archivo vienen los cambios que se hicieron contra versión 2
+Hay una versión 2, 
+
+https://github.com/AlfonsoOrozcoAguilarnoNDA/snippetsMIT/blob/main/instalar_GITEA_debian13v2.md
+te sugiero que uses esa. Al final de este texto vienen los cambios que se hicieron contra versión 2 pero
+usa la del enlace.
 ---
 
 ## 1. Apuntar el Subdominio
