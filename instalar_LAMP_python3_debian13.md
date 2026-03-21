@@ -189,7 +189,7 @@ Pega la siguiente configuración usando tu propia dirección de correo en `Serve
 <VirtualHost *:80>
     ServerName tu-dominio.com
     ServerAlias www.tu-dominio.com
-    ServerAdmin admin@tu-dominio.com
+    ServerAdmin tucuenta@gmail.com
 
     DocumentRoot /var/www/tu-dominio.com/public_html
 
