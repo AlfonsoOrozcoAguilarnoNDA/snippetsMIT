@@ -1,3 +1,7 @@
+![Logo de Vibe Coding México](instalargitea.jpg)
+
+[![PHP Version](https://img.shields.io/badge/php-%3E%3D8.0-8892bf.svg)](https://www.php.net/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 # 🐙 Instalar Gitea en Debian 13 (Vultr)
 
 **Stack:** Gitea + Git + Apache VirtualHost + SSL Certbot  
@@ -316,6 +320,35 @@ sudo -u gitea cp /var/lib/gitea/data/gitea.db \
 - Para agregar usuarios manualmente: panel de administración → **Usuarios** → **Crear cuenta**.
 
 ---
+## 🧪 Notas del Autor
+
+Este repositorio es parte de los experimentos documentados en 
+**[vibecodingmexico.com](https://vibecodingmexico.com)**.
+
+El código aquí publicado fue generado con asistencia de LLMs — 
+se documenta cuál modelo generó qué y en qué fecha, porque eso 
+es parte del experimento. Los modelos cambian. Los resultados de hoy 
+no garantizan los resultados de mañana. Por eso se fecha todo.
+
+Mi nombre es **Alfonso Orozco Aguilar**, mexicano, programador desde 1991.
+
+---
+
+## ⚖️ Licencia
+
+Este repositorio se distribuye bajo licencia **MIT**.
+
+El código es tuyo para usar, copiar, modificar y distribuir. 
+La única condición es mantener el aviso de copyright en las copias sustanciales.
+
+Para proyectos con requerimientos de licencia distintos, 
+revisa el repositorio **SnippetsLGPL**.
+
+---
+
+## ✍️ Acerca del Autor
+* **Sitio Web:** [vibecodingmexico.com](https://vibecodingmexico.com)
+* **Facebook:** [Perfil de Alfonso Orozco Aguilar](https://www.facebook.com/alfonso.orozcoaguilar)
 
 *Complemento del manual [Instalar LAMP y Python en Debian 13](./instalar_LAMP_python3_debian13.md)*  
 *Publicado en [vibecodingmexico.com](https://vibecodingmexico.com) • Licencia MIT*
