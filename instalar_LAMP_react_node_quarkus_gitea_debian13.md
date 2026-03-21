@@ -579,6 +579,8 @@ sudo chmod 640 /etc/gitea/app.ini
 
 Para un servidor de 4GB con MariaDB, Apache y Gitea conviviendo, el modo Dev/JVM es el punto de partida correcto. La compilación nativa queda como optimización futura cuando el proyecto justifique el setup.
 
+**Tratar de usar java springboot o quarkus sin maven o sin gradle es como tratar de tomar agua sin vaso y sin manos.**
+
 ### Instalar Maven y Gradle
 
 ```bash
@@ -593,6 +595,8 @@ gradle -v
 Maven es el estándar para la mayoría de proyectos Spring/Quarkus. Gradle es más rápido y consume menos RAM; sufre menos corrupción de caché. Tener los dos disponibles permite detectar y aislar problemas de permisos más fácilmente.
 
 ### Crear el proyecto Quarkus
+
+Uso lasiniciales aoa queson lasmias, pero te recomiendo que uses tus propias iniciales en luga rde aoa
 
 ```bash
 mkdir -p /var/www/quarkus-app
