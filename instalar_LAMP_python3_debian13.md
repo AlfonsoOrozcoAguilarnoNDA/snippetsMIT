@@ -192,11 +192,13 @@ sudo apt install -y php8.4-fpm php8.4-mysql php8.4-curl php8.4-bcmath php8.4-xml
   php8.4-mbstring php8.4-zip php8.4-gd php8.4-intl
 ```
 
-Las tres extensiones que **siempre** debes incluir:
+Las cuatro extensiones que **siempre** debes incluir:
 
 - **`php-curl`** — Indispensable para que el servidor pueda hacer peticiones externas, como verificar licencias o conectar con APIs de pago.
 - **`php-bcmath`** — Maneja aritmética de precisión arbitraria. Sin esto, algunos cálculos financieros pueden dar errores de redondeo. Indispensable en factura electrónica.
 - **`php-xml`** — Necesario para cualquier sistema que use estructuras de datos XML o RSS.
+- **`php-mbstring`** — cadenas multibyte, caracteres especiales en español
+
 
 > Es posible que necesites instalar algún módulo extra según tu proyecto, pero estas son las más comunes. Puedes instalar módulos adicionales en cualquier momento con `sudo apt install php8.4-<modulo> -y`.
 
