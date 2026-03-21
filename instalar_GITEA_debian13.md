@@ -29,6 +29,8 @@ URL de Gitea:         https://git.tu-dominio.com
 > **Anótala en papel si hace falta.**
 
 ---
+Hay una versión 2, te sugiero que uses esa. Alfinal de este archivo vienen los cambios quese hicieron contra versión 2
+---
 
 ## 1. Apuntar el Subdominio
 
@@ -309,6 +311,33 @@ sudo -u gitea cp /var/lib/gitea/data/gitea.db \
   /home/tu-usuario/respaldo-gitea-$(date +%Y-%m-%d).db
 ```
 
+
+# Inician Cambios quese hicieron para crear la versión 2
+# Guía de instalación y configuración de Gitea  
+**Versión:** gitea-1.22.3  
+**Fecha de redacción:** 21/03/2026  
+
+---
+
+## Gitea vs Gitea Actions
+Es importante distinguir que **Gitea Actions** requiere un componente separado: `act_runner`.  
+- **Gitea**: el servidor principal de repositorios.  
+- **act_runner**: ejecutor independiente para flujos de trabajo (CI/CD).  
+No confundirlos evita errores de despliegue y configuración.
+
+---
+
+## Configuración de [server] en `app.ini`
+Este bloque suele ser el más omitido y problemático, ya que define la identidad pública del servicio:
+
+```ini
+[server]
+DOMAIN           = git.midominio.com
+ROOT_URL         = https://git.midominio.com/
+SSH_DOMAIN       = git.midominio.com
+SSH_PORT         = 22
+
+# Terminan Cambios quese hicieron para crear la versión 2
 ---
 
 ## Notas Finales
