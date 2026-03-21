@@ -123,7 +123,7 @@ Para asegurar compatibilidad con diversos desarrollos, editamos la configuració
 sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
 ```
 
-Busca la sección `[mysqld]` y añade:
+Busca la sección `[mysqld]` . Si no existe creala y añade:
 
 ```ini
 sql_mode = ""
