@@ -16,6 +16,7 @@ Este manual detalla la configuración de un entorno de servidor profesional, est
 1. **Debian 13 (Trixie):** Usamos esta distribución por ser probada, antigua y confiable. **No usamos Ubuntu** para evitar el sistema de *Snaps* y dependencias de terceros que comprometan la estabilidad.
 2. **Manejadores de Paquetes:** Si decides usar distribuciones basadas en Red Hat (como Rocky Linux o AlmaLinux), recuerda que el comando `apt` cambia por `dnf` y las rutas de configuración de Apache pueden variar.
 3. **Privilegios:** Se asume el uso de `sudo` para ejecutar comandos con privilegios de superusuario.
+4. **Vigencia:** Escribimos esto el 21 de marzo 2026, con el tiempo puede estar desfasado.
 
 ---
 
