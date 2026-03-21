@@ -20,6 +20,10 @@ Este manual detalla la configuración de un entorno de servidor profesional, est
 
 ## 📋 Premisas
 
+Artículo completo
+
+https://vibecodingmexico.com/instalar-lamp-y-python-en-debian-13/
+
 Antes de empezar, asegúrate de cumplir con lo siguiente:
 
 1. **Estás en Vultr.** Si usas otro proveedor, necesitas un cliente SSH como [PuTTY](https://www.putty.org/) en lugar de la terminal web de Vultr.
