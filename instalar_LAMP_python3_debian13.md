@@ -18,6 +18,46 @@ Este manual detalla la configuración de un entorno de servidor profesional, est
 3. **Privilegios:** Se asume el uso de `sudo` para ejecutar comandos con privilegios de superusuario.
 4. **Vigencia:** Escribimos esto el 21 de marzo 2026, con el tiempo puede estar desfasado.
 
+## 📋 Premisas
+
+Antes de empezar, asegúrate de cumplir con lo siguiente:
+
+1. **Estás en Vultr.** Si usas otro proveedor, necesitas un cliente SSH como [PuTTY](https://www.putty.org/) en lugar de la terminal web de Vultr.
+
+2. **Tienes Debian 13 instalado.** Si usas otra versión puede que necesites ajustes. Cuando salga Debian 14, este manual puede quedar desactualizado.
+
+3. **Tienes acceso como `root`.** Algunos proveedores como OVHcloud usan un usuario intermedio (`debian`) que puede causar problemas al instalar ciertos paquetes como PM2.
+
+4. **Ya compraste un dominio** (en Porkbun u otro registrar), lo apuntaste a Vultr y configuraste el VPS con Debian 13.
+
+5. **El dominio importa — sustitúyelo completo.** En este manual usamos `tu-dominio.com` como ejemplo. Debes reemplazarlo por el tuyo en **todos** los scripts, incluyendo la extensión. Si compraste `patitodehule.com.mx`, cada aparición de `tu-dominio.com` se convierte en `patitodehule.com.mx`.
+
+> **Antes de empezar:** Abre un bloc de notas o Word en blanco y guárdalo. Lo usarás para anotar temporalmente tu IP y contraseña del servidor.
+
+---
+
+## 🖥️ Cómo entrar al servidor (Vultr)
+
+1. Entra a Vultr, ve a tu lista de instancias y da clic en los tres puntos de tu servidor → **Server Details**.
+2. Copia el **password** y la **IP Address** y pégalos en tu bloc de notas.
+3. Da clic en el ícono del monitor (parte superior) para abrir la terminal web (noVNC).
+4. En la terminal web, da clic en la pestaña gris del lado izquierdo → aparece un ícono de **clipboard**. Ahí pegas los comandos que siguen.
+5. Inicia sesión con usuario `root` y el password que copiaste. No olvides dar **Enter** después de cada comando.
+
+> **Tips de la terminal:**
+> - Ve paso por paso. A veces uno es más rápido que el internet.
+> - El prompt `#_` (cursor parpadeante) indica que el servidor está listo para el siguiente comando.
+> - Las líneas que empiezan con `#` en los scripts son **comentarios** — no las necesitas ejecutar.
+
+---
+
+## ⚠️ Notas de Compatibilidad
+
+1. **Debian 13 (Trixie):** Usamos esta distribución por ser estable y confiable. **No usamos Ubuntu** para evitar el sistema de *Snaps* y dependencias de terceros.
+2. **Red Hat / Rocky / AlmaLinux:** El comando `apt` cambia por `dnf` y las rutas de Apache pueden variar.
+3. **Privilegios:** Todos los comandos asumen acceso `root`. Si tu proveedor usa `sudo`, agrégalo al inicio de cada comando.
+
+---
 ---
 
 ## 1. Actualización del Sistema
