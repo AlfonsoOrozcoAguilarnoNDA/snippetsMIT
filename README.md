@@ -41,6 +41,112 @@ pero si te explota es asunto tuyo.
 *(La tabla crece con cada nuevo post)*
 
 ---
+# 📖 ¿Qué manual necesito?
+
+**Repositorio:** [snippetsMIT](https://github.com/AlfonsoOrozcoAguilarnoNDA/snippetsMIT)  
+**Autor:** Alfonso Orozco Aguilar — [vibecodingmexico.com](https://vibecodingmexico.com)
+
+Todos los manuales asumen **Debian 13 (Trixie)** en **Vultr VPS** con acceso root real.  
+Si usas otro proveedor, lee la nota de OVHcloud en cada manual antes de empezar.
+
+---
+
+## Resumen rápido
+
+| Manual | Servidor Web | PHP | Node/React | Gitea | Quarkus | Para quién |
+|--------|-------------|-----|-----------|-------|---------|------------|
+| `instalar_LAMP_python3_debian13.md` | Apache | ✅ 8.4 | ❌ | ❌ | ❌ | El punto de partida. PHP + Python + Flask. |
+| `instalar_LAMP_react_node_quarkus_gitea_debian13.md` | Apache | ✅ 8.4 | ✅ Node 22 + React | ✅ | ✅ | LAMP completo con stack moderno. |
+| `instalar_LEMP_debian13.md` | **Nginx** | ✅ 8.4 | ✅ Node 22 + React | ✅ | ✅ | Lo mismo pero con Nginx en lugar de Apache. |
+| `instalar_GITEA_debian13.md` | Apache (existente) | — | ❌ | ✅ v1 | ❌ | Solo Gitea. Versión inicial. |
+| `instalar_GITEA_debian13v2.md` | Apache (existente) | — | ❌ | ✅ v2 | ❌ | Solo Gitea. **Versión recomendada.** |
+
+---
+
+## El orden lógico de instalación
+
+```
+1. instalar_LAMP_python3_debian13.md        ← Empieza aquí siempre
+2. instalar_GITEA_debian13v2.md             ← Agrega control de versiones
+3. instalar_LAMP_react_node_quarkus_...md   ← Si necesitas Node/React/Quarkus
+```
+
+> El manual LEMP es una alternativa al paso 3, no un paso adicional.  
+> **No instales Apache y Nginx en el mismo servidor** — compiten por los puertos 80 y 443.
+
+---
+
+## ¿Apache (LAMP) o Nginx (LEMP)?
+
+La diferencia central es el servidor web. El resto del stack es prácticamente idéntico.
+
+**Usa Apache si:**
+- Es tu primera vez configurando un servidor
+- Usas `.htaccess` (WordPress, Laravel, CodeIgniter)
+- Prefieres `VirtualHost` y `RewriteRule` — más documentación en español disponible
+- Quieres el stack recomendado por el autor de este repositorio
+
+**Usa Nginx si:**
+- Ya tienes experiencia con servidores
+- Necesitas mayor rendimiento bajo carga alta
+- Estás familiarizado con bloques `server`, `location` y `alias`
+- Sabes que **las barras en Nginx importan**: `/app` no es lo mismo que `/app/`
+
+> El autor prefiere Apache para trabajo real con Compliance (facturación electrónica,  
+> sistemas de salud, gobierno) por menor número de dependencias y mayor documentación  
+> en español para el mercado LATAM.
+
+---
+
+## Diferencia entre instalar_GITEA v1 y v2
+
+Usa siempre **v2**. Los cambios respecto a v1 son correcciones de problemas reales:
+
+| Punto | v1 | v2 |
+|-------|----|----|
+| Puerto 3000 | Nunca se abre | Se abre para la instalación y se cierra después |
+| Sección `[server]` en app.ini | No incluida | **Incluida** — sin esto los links de clonar apuntan a la IP |
+| Registro desactivado | Solo 1 línea | 3 líneas — más robusto |
+| Límite de tamaño de commits | No configurado | `LimitRequestBody` en Apache — evita error 413 |
+| Gitea vs Gitea Actions | No explicado | Explicado al inicio — evita confusión frecuente |
+
+---
+
+## Nota sobre OVHcloud
+
+OVHcloud usa un usuario intermedio `debian` en lugar de root directo.  
+Esto genera problemas graves con **PM2, NVM y permisos de npm**.
+
+- ✅ LAMP/LEMP básico con PHP: funciona en OVHcloud
+- ✅ Gitea: funciona en OVHcloud  
+- ⚠️ Node, React, PM2, Quarkus: usa **Vultr u otro proveedor con root real**
+
+---
+
+## Tecnologías y por qué estas y no otras
+
+**PHP 8.4 en lugar de Node para backend:**  
+PHP está preinstalado en casi todos los servidores. Sin dependencias externas auditables.  
+Indispensable en entornos regulados (facturación electrónica, salud, gobierno).
+
+**Python + Flask para servicios específicos:**  
+Para análisis de datos, dashboards o APIs donde Python tiene ventaja real.  
+Siempre en entorno virtual — nunca instalar paquetes pip en el sistema global.
+
+**Gitea en lugar de GitHub/GitLab:**  
+Control de versiones propio en tu servidor. Un binario de Go sin dependencias.  
+Si los modelos públicos desaparecen o te banean, tu código sigue siendo tuyo.
+
+**Quarkus en lugar de Spring Boot:**  
+Menor consumo de RAM. Más rápido en arranque. Mejor para VPS de recursos limitados.  
+Spring Boot en un servidor de 1 GB RAM con MariaDB y Nginx conviviendo es un problema.
+
+**React en modo estático solamente:**  
+Los CVE de diciembre 2025 (CVE-2025-55182 al CVE-2025-67779) afectan React Server Components.  
+En modo estático — archivos compilados servidos por Apache/Nginx — no aplican.  
+Para proyectos regulados considera Vue.js, Astro o PHP puro.
+
+---
 
 ## 🛠️ Especificaciones Generales
 
