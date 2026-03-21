@@ -320,19 +320,6 @@ sudo -u gitea cp /var/lib/gitea/data/gitea.db \
 - Para agregar usuarios manualmente: panel de administración → **Usuarios** → **Crear cuenta**.
 
 ---
-## 🧪 Notas del Autor
-
-Este repositorio es parte de los experimentos documentados en 
-**[vibecodingmexico.com](https://vibecodingmexico.com)**.
-
-El código aquí publicado fue generado con asistencia de LLMs — 
-se documenta cuál modelo generó qué y en qué fecha, porque eso 
-es parte del experimento. Los modelos cambian. Los resultados de hoy 
-no garantizan los resultados de mañana. Por eso se fecha todo.
-
-Mi nombre es **Alfonso Orozco Aguilar**, mexicano, programador desde 1991.
-
----
 
 ## ⚖️ Licencia
 
@@ -347,6 +334,11 @@ revisa el repositorio **SnippetsLGPL**.
 ---
 
 ## ✍️ Acerca del Autor
+Este repositorio es parte de los experimentos documentados en 
+**[vibecodingmexico.com](https://vibecodingmexico.com)**.
+
+Mi nombre es **Alfonso Orozco Aguilar**, mexicano, programador desde 1991.
+
 * **Sitio Web:** [vibecodingmexico.com](https://vibecodingmexico.com)
 * **Facebook:** [Perfil de Alfonso Orozco Aguilar](https://www.facebook.com/alfonso.orozcoaguilar)
 
