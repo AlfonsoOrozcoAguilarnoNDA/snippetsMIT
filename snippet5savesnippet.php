@@ -4,6 +4,7 @@
  * Fecha: 2026-03-20
  * Objetivo: Guardar código generado con LLM con validación por dirección IP y enlace de ejecución.
  * Filename: snippet_manager.php
+ * https://vibecodingmexico.com/snippets-5-guardar-snippets/
  * Licencia: MIT
  */
 // Set headers to prevent caching on the client side and proxies
