@@ -376,25 +376,10 @@ sudo -u gitea cp /var/lib/gitea/data/gitea.db \
 
 ---
 
-## 🧪 Notas del Autor
-
-Este repositorio es parte de los experimentos documentados en
-**[vibecodingmexico.com](https://vibecodingmexico.com)**.
-
-El código aquí publicado fue generado con asistencia de LLMs —
-se documenta cuál modelo generó qué y en qué fecha, porque eso
-es parte del experimento. Los modelos cambian. Los resultados de hoy
-no garantizan los resultados de mañana. Por eso se fecha todo.
-
-Mi nombre es **Alfonso Orozco Aguilar**, mexicano, programador desde 1991.
-
----
-
 ## ⚖️ Licencia
 
 Este repositorio se distribuye bajo licencia **MIT**.
 
-El código es tuyo para usar, copiar, modificar y distribuir.
 La única condición es mantener el aviso de copyright en las copias sustanciales.
 
 Para proyectos con requerimientos de licencia distintos,
@@ -403,6 +388,11 @@ revisa el repositorio **SnippetsLGPL**.
 ---
 
 ## ✍️ Acerca del Autor
+Este repositorio es parte de los experimentos documentados en
+**[vibecodingmexico.com](https://vibecodingmexico.com)**.
+
+Mi nombre es **Alfonso Orozco Aguilar**, mexicano, programador desde 1991.
+
 
 - **Sitio Web:** [vibecodingmexico.com](https://vibecodingmexico.com)
 - **Facebook:** [Perfil de Alfonso Orozco Aguilar](https://www.facebook.com/alfonso.orozcoaguilar)
