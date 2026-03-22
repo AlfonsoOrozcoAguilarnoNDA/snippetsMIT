@@ -248,7 +248,8 @@ Pega la siguiente configuración usando tu propia dirección de correo en `Serve
 
     ErrorLog ${APACHE_LOG_DIR}/tu-dominio.com-error.log
     CustomLog ${APACHE_LOG_DIR}/tu-dominio.com-access.log combined
-</VirtualHost>```
+</VirtualHost>
+```
 
 > **Nota sobre múltiples dominios:** Si tienes el mismo sitio en `.com` y `.net`, crea un archivo `.conf` separado para cada uno y asegúrate de que los nombres de los logs incluyan la extensión completa (como arriba) para que no se sobreescriban entre sí.
 
