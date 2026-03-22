@@ -219,10 +219,13 @@ sudo systemctl enable php8.4-fpm
 ### Crear el directorio del proyecto
 
 ```bash
-sudo mkdir -p /var/www/tu-dominio.com/public_html/app
+sudo mkdir -p /var/www/tu-dominio.com
 ```
 
-> **Recomendación:** Pon algo en `index.html` de `public_html` y algo en el de `app` **antes** de continuar. Algo tan simple como `<h1>Hola!</h1>` sirve. Verifica que ves lo correcto **ahora** y no en dos horas cuando hayas avanzado más.
+> **Recomendación:** Pon algo en `index.html` **antes** de continuar. Algo tan simple como `<h1>Hola!</h1>` sirve. Verifica que ves lo correcto **ahora** y no en dos horas cuando hayas avanzado más.
+
+ ```bash
+sudo nano /var/www/tu-dominio.com/index.html 
 
 ### Crear el archivo de configuración
 
