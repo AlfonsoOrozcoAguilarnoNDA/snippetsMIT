@@ -121,7 +121,7 @@ sudo ufw enable
 
 ## 4. Base de Datos (MariaDB)
 
-### Instalación y seguridad inicial . Es deseable pero si tienes problemas brinca este paso y hazlo después.
+### Instalación y seguridad inicial . Es deseable pero si tienes problemas brinca SOLAMENTE ESTE COMANDO y hazlo después.
 
 ```bash
 sudo mysql_secure_installation
