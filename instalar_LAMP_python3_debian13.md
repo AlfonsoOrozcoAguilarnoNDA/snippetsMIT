@@ -238,9 +238,9 @@ Pega la siguiente configuración usando tu propia dirección de correo en `Serve
     ServerAlias www.tu-dominio.com
     ServerAdmin tucuenta@gmail.com
 
-    DocumentRoot /var/www/tu-dominio.com/public_html
+    DocumentRoot /var/www/tu-dominio.com
 
-    <Directory /var/www/tu-dominio.com/public_html>
+    <Directory /var/www/tu-dominio.com>
         Options -Indexes +FollowSymLinks
         AllowOverride All
         Require all granted
