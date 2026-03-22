@@ -246,21 +246,11 @@ Pega la siguiente configuración usando tu propia dirección de correo en `Serve
         Require all granted
     </Directory>
 
-    # Bloque específico para la app React
-    # Asegura que Apache busque primero los archivos físicos
-    <Directory /var/www/tu-dominio.com/public_html/app>
-        RewriteEngine On
-        RewriteBase /app/
-        RewriteRule ^index\.html$ - [L]
-        RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteCond %{REQUEST_FILENAME} !-d
-        RewriteRule . /app/index.html [L]
-    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/tu-dominio.com-error.log
+    CustomLog ${APACHE_LOG_DIR}/tu-dominio.com-access.log combined
+</VirtualHost>```
 
-    ErrorLog ${APACHE_LOG_DIR}/tu-dominio-error.log
-    CustomLog ${APACHE_LOG_DIR}/tu-dominio-access.log combined
-</VirtualHost>
-```
+> **Nota sobre múltiples dominios:** Si tienes el mismo sitio en `.com` y `.net`, crea un archivo `.conf` separado para cada uno y asegúrate de que los nombres de los logs incluyan la extensión completa (como arriba) para que no se sobreescriban entre sí.
 
 ### Activar el sitio y recargar Apache
 
