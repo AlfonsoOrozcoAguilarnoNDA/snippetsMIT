@@ -1,6 +1,6 @@
 <?php
-/**
- * WordPress Index Generator
+/** 
+ * WordPress Index Generator (v1.1 - Filtered)
  * https://vibecodingmexico.com/snippet-4-el-no-plugin-de-wordpress/
  * Genera un índice cronológico de lectura organizado por categorías.
  * * @author    Alfonso Orozco Aguilar
@@ -18,15 +18,16 @@
 // 1. Cargar el entorno de WordPress
 require_once('wp-load.php');
 
-/* Activa esto para que solo el admin pueda hacerlo, yo lo dejo abierto
-if ( !is_user_logged_in() || !current_user_can('manage_options') ) {
-    header('HTTP/1.1 403 Forbidden');
-    die('Acceso denegado: Se requiere sesión de administrador activa.');
-}
-*/
+// --- CONFIGURACIÓN DE FILTRADO ---
+//$categorias_ignorar = "Dos Imagenes,Tres Imagenes"; // Categorías a omitir
+$categorias_ignorar = "Dos Imagenes,Regenerar Imagen Nano"; // Categorías a omitir
+// Convertimos a array y limpiamos espacios en blanco
+$exclude_array = array_map('trim', explode(',', $categorias_ignorar));
+// ---------------------------------
 
-$csh=0; // contador
-// Seguridad: Solo administradores o ejecución por CLI (Debian/Server)
+$csh = 0; // contador
+
+// Seguridad: Solo administradores o ejecución por CLI
 if (!is_user_logged_in() || !current_user_can('manage_options')) {
     if (php_sapi_name() !== 'cli') {
         die('Acceso denegado: Se requieren privilegios de administrador.');
@@ -35,12 +36,17 @@ if (!is_user_logged_in() || !current_user_can('manage_options')) {
 
 global $wpdb;
 
-/** * LÓGICA DE EXTRACCIÓN Y FORMATEO
- */
+/** LÓGICA DE EXTRACCIÓN Y FORMATEO **/
 $categories = get_categories(array('orderby' => 'name', 'order' => 'DESC'));
 $html_output = '<div class="wp-reading-index py-3">';
 
 foreach ($categories as $cat) {
+    
+    // VALIDACIÓN: Si el nombre de la categoría está en nuestra lista negra, saltamos al siguiente
+    if (in_array($cat->name, $exclude_array)) {
+        continue;
+    }
+
     $posts = get_posts(array(
         'category'       => $cat->term_id,
         'orderby'        => 'date',
@@ -62,25 +68,20 @@ foreach ($categories as $cat) {
             $date = get_the_date('d M, Y', $post->ID);
             $html_output .= "<li><span class='badge badge-light badge-pill text-muted font-weight-normal'>{$date}</span>
                 <a href='{$link}' class='list-group-item list-group-item-action d-flex justify-content-between align-items-center'>
-                    <span><i class='far fa-file-alt mr-4 text-muted'></i>&nbsp;&nbsp;" . get_the_title($post->ID) . "</span></a>";
+                    <span><i class='far fa-file-alt mr-4 text-muted'></i>&nbsp;&nbsp;" . get_the_title($post->ID) . "</span></a></li>";
         }
 
-        $html_output .= '</ol>
-        </div></div><h6>';
+        $html_output .= '</ol></div></div>';
     }
 }
-$html_output .= "$csh Entradas en total".'
-        <hr>
-                
-                <h3><i class="fas fa-external-link-alt mr-2">&nbsp;&nbsp;&nbsp;<a href="../wp-index-generator.php" target="_blank">
-    </i> Regenerar Índice en vivo
-</a></h3>
-        
-        </div>';
 
-/**
- * ACTUALIZACIÓN DE LA PÁGINA "INDICE"
- */
+$html_output .= "<h6>$csh Entradas en total</h6>
+        <hr>
+        <h3><i class='fas fa-external-link-alt mr-2'>&nbsp;&nbsp;&nbsp;<a href='../wp-index-generator.php' target='_blank'>
+    </i> Regenerar Índice en vivo
+</a></h3></div>";
+
+/** ACTUALIZACIÓN DE LA PÁGINA "INDICE" **/
 $target_title = 'Indice';
 $page_id = $wpdb->get_var($wpdb->prepare(
     "SELECT ID FROM {$wpdb->posts} WHERE post_title = %s AND post_type = 'page' AND post_status = 'publish' LIMIT 1",
@@ -107,8 +108,8 @@ $page_id = $wpdb->get_var($wpdb->prepare(
 <div class="container">
     <div class="card console-card shadow-lg border-0">
         <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-            <span class="font-weight-bold"><i class="fas fa-terminal mr-2"></i>WP_INDEX_GEN v1.0</span>
-            <span class="badge badge-success">20 Marzo 2026</span>
+            <span class="font-weight-bold"><i class="fas fa-terminal mr-2"></i>WP_INDEX_GEN v1.1</span>
+            <span class="badge badge-success">23 Marzo 2026</span>
         </div>
         
         <div class="card-body bg-white p-5 text-center">
@@ -117,7 +118,7 @@ $page_id = $wpdb->get_var($wpdb->prepare(
             ?>
                 <i class="fas fa-sync-alt fa-3x text-success mb-4 fa-spin" style="animation-duration: 3s;"></i>
                 <h2 class="h4">Página Actualizada con Éxito</h2>
-                <p class="text-muted small">El índice cronológico ha sido inyectado en la página "Indice" (ID: <?php echo $page_id; ?>).</p>
+                <p class="text-muted small">Índice inyectado (ID: <?php echo $page_id; ?>). Se omitieron: <strong><?php echo $categorias_ignorar; ?></strong></p>
                 <hr>
                 <a href="<?php echo get_permalink($page_id); ?>" class="btn btn-primary btn-lg shadow-sm" target="_blank">
                     <i class="fas fa-external-link-alt mr-2"></i>Ver el Índice en vivo
@@ -126,7 +127,6 @@ $page_id = $wpdb->get_var($wpdb->prepare(
                 <i class="fas fa-exclamation-circle fa-3x text-danger mb-4"></i>
                 <h2 class="h4 text-danger">Página no encontrada</h2>
                 <p>No existe una página con el título exacto <strong>"Indice"</strong>.</p>
-                <p class="small text-muted font-italic">Crea una página nueva llamada "Indice" y vuelve a ejecutar este script.</p>
             <?php endif; ?>
         </div>
 
@@ -136,7 +136,7 @@ $page_id = $wpdb->get_var($wpdb->prepare(
                     Desarrollado por: <strong>Alfonso Orozco Aguilar</strong>
                 </div>
                 <div class="col-sm-6 text-right text-muted small">
-                    Licencia MIT | PHP 8.x Compatible
+                    Licencia MIT | PHP 8.x
                 </div>
             </div>
         </div>
