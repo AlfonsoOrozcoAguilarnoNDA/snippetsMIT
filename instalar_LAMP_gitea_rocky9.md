@@ -1,7 +1,7 @@
 ![Logo de Vibe Coding México](instalarrocky.jpg)
 
 [![Rocky Linux](https://img.shields.io/badge/rocky%20linux-9-10B981.svg)](https://rockylinux.org)
-[![PHP Version](https://img.shields.io/badge/php-%3E%3D8.2-8892bf.svg)](https://www.php.net/)
+[![PHP Version](https://img.shields.io/badge/php-%3E%3D8.4-8892bf.svg)](https://www.php.net/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 # 🪨 Manual: LAMP + Git + Gitea en Rocky Linux 9 (Vultr)
@@ -137,9 +137,9 @@ firewall-cmd --list-all
 
 ---
 
-## 4. Instalar PHP 8.2
+## 4. Instalar PHP 8.4
 
-Rocky Linux 9 trae PHP en sus repositorios base, pero para tener PHP 8.2 con todas las extensiones necesarias usamos el repositorio **Remi**, que es el estándar de la comunidad para PHP en distribuciones Red Hat.
+Rocky Linux 9 trae PHP en sus repositorios base, pero para tener PHP 8.4 con todas las extensiones necesarias usamos el repositorio **Remi**, que es el estándar de la comunidad para PHP en distribuciones Red Hat.
 
 ```bash
 # Instalar repositorio EPEL (prerequisito de Remi)
