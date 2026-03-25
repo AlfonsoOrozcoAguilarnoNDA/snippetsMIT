@@ -4,7 +4,7 @@
 [![PHP Version](https://img.shields.io/badge/php-%3E%3D8.4-8892bf.svg)](https://www.php.net/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-# 🪨 Manual: LAMP + Git + Gitea en Rocky Linux 9 (Vultr)
+# Manual: LAMP + Git + Gitea en Rocky Linux 9 (Vultr)
 
 **Stack:** LAMP (Rocky Linux 9) + SSL Certbot + PHP 8.2 + Git + Gitea  
 **Plataforma base:** Vultr VPS — La Maravilla de 5 USD  
