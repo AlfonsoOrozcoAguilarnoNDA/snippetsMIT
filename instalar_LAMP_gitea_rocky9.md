@@ -22,7 +22,7 @@ Uso Rocky Linux 9.0 con algunios clientes que no quieren o no pueden actualizar 
 
 En lo eprsonal, uso Rocky Linux para servidores que no modifico el código, así que se que para mi Rocky Linux es respaldar solo base de datos.
 
-Rocky Linux cumple un rol diferente en MI modelo mental. Cuando entro a tu panel de Vultr y veo el ícono de Rocky Linux, el mensaje es claro: **este servidor no se toca**. Está ahí para recibir deploys automáticos por pull, no para que le esté moviendo la configuración. Mi trabajo con él es simple: respaldar las bases de datos y dejarlo correr.
+Rocky Linux cumple un rol diferente en MI modelo mental. Cuando entro a mi panel de Vultr y veo el ícono de Rocky Linux, el mensaje es claro: **este servidor no se toca**. Está ahí para recibir deploys automáticos por pull, no para que le esté moviendo la configuración. Mi trabajo con él es simple: respaldar las bases de datos y dejarlo correr.
 
 Dicho de otro modo:
 
