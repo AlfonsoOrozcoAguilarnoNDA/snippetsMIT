@@ -20,50 +20,64 @@
  * Auditoría de Librerías y Atributos - Ejecución Automática
  * PHP 8.x Procedural + Bootstrap 4.6
  */
+// --- CLÁUSULA DE SEGURIDAD: Verificación de mbstring ---
+$mbstring_instalada = extension_loaded('mbstring');
 
 $directorioBase = __DIR__; 
 $extensionBuscada = 'php';
 $patrones = [
     'maxcdn.bootstrapcdn.com',
-  	'stackpath.bootstrapcdn.com',
+    'stackpath.bootstrapcdn.com',
     'cdnjs.cloudflare.com',
+    '4.6.3',
+    '4.5.2',
+    '5.15.3',
     'code.jquery.com'
 ];
 
 $resultados = [];
 
-// Ejecución por default (sin esperar POST)
-$directory = new RecursiveDirectoryIterator($directorioBase);
-$iterator = new RecursiveIteratorIterator($directory);
+if ($mbstring_instalada) {
+    $directory = new RecursiveDirectoryIterator($directorioBase);
+    $iterator = new RecursiveIteratorIterator($directory);
 
-foreach ($iterator as $archivo) {
-    if ($archivo->isFile() && $archivo->getExtension() === $extensionBuscada) {
-        // Evitar que el propio script se audite a sí mismo si se llama igual
-        if ($archivo->getFilename() === basename(__FILE__)) continue;
+    foreach ($iterator as $archivo) {
+        if ($archivo->isFile() && $archivo->getExtension() === $extensionBuscada) {
+            if ($archivo->getFilename() === basename(__FILE__)) continue;
 
-        $rutaCompleta = $archivo->getPathname();
-        $contenido = file_get_contents($rutaCompleta);
-        
-        $encontrado = false;
-        $dominiosDetectados = [];
-        
-        foreach ($patrones as $patron) {
-            if (strpos($contenido, $patron) !== false) {
-                $encontrado = true;
-                $dominiosDetectados[] = $patron;
-            }
-        }
-
-        if ($encontrado) {
-            $tieneIntegrity = (strpos($contenido, 'integrity') !== false);
-            $tieneLicencia = (strpos($contenido, 'Licencia') !== false);
+            $rutaCompleta = $archivo->getPathname();
+            $contenido = file_get_contents($rutaCompleta);
             
-            $resultados[] = [
-                'archivo' => $rutaCompleta,
-                'dominios' => implode(', ', array_unique($dominiosDetectados)),
-                'integrity' => $tieneIntegrity,
-                'licencia' => $tieneLicencia
-            ];
+            $encontrado = false;
+            $dominiosDetectados = [];
+            
+            foreach ($patrones as $patron) {
+                if (strpos($contenido, $patron) !== false) {
+                    $encontrado = true;
+                    $dominiosDetectados[] = $patron;
+                }
+            }
+
+            if ($encontrado) {
+                // 1. Contar líneas
+                $lineas = count(file($rutaCompleta));
+
+                // 2. Detectar BOM (UTF-8)
+                $bom = (substr($contenido, 0, 3) === pack("CCC", 0xef, 0xbb, 0xbf));
+
+                // 3. Detectar Encoding (Seguro con mbstring)
+                $encoding = mb_detect_encoding($contenido, 'UTF-8', true) ?: 'Otro/Desconocido';
+                
+                $resultados[] = [
+                    'archivo' => $rutaCompleta,
+                    'dominios' => implode(', ', array_unique($dominiosDetectados)),
+                    'integrity' => (strpos($contenido, 'integrity') !== false),
+                    'licencia' => (strpos($contenido, 'Licencia') !== false),
+                    'lineas' => $lineas,
+                    'bom' => $bom,
+                    'encoding' => $encoding
+                ];
+            }
         }
     }
 }
@@ -74,13 +88,13 @@ foreach ($iterator as $archivo) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auditor de Código - Gemini 3 Flash</title>
+    <title>Auditor de Código - Centinela Pro</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <style>
         body { padding-top: 70px; padding-bottom: 80px; }
-        .footer { position: fixed; bottom: 0; width: 100%; height: 60px; line-height: 60px; background-color: #222; color: #aaa; border-top: 2px solid #444; }
-        .table-sm td, .table-sm th { font-size: 0.82rem; vertical-align: middle; }
-        .text-monospace { word-break: break-all; color: #555; }
+        .footer { position: fixed; bottom: 0; width: 100%; height: 60px; line-height: 60px; background-color: #1a1a1a; color: #888; border-top: 2px solid #333; }
+        .table-sm td, .table-sm th { font-size: 0.78rem; vertical-align: middle; }
+        .badge-fixed { width: 90px; display: inline-block; }
     </style>
 </head>
 <body class="bg-light">
@@ -88,51 +102,68 @@ foreach ($iterator as $archivo) {
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark shadow">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <strong>Gemini 3 Flash</strong> <span class="badge badge-warning ml-2">Scanner Activo</span>
+            <strong>Gemini 3 Flash</strong> <span class="badge badge-warning ml-2">Scanner v1.4</span>
         </a>
     </div>
 </nav>
 
 <div class="container-fluid mt-4">
+    
+    <?php if (!$mbstring_instalada): ?>
+        <div class="alert alert-danger shadow">
+            <h4 class="alert-heading font-weight-bold">¡Error Crítico de Dependencia!</h4>
+            <p>La extensión <strong>mbstring</strong> no está instalada o habilitada en este servidor PHP.</p>
+            <hr>
+            <p class="mb-0 small text-monospace text-uppercase">Para corregir: Edita tu php.ini y descomenta extension=mbstring</p>
+        </div>
+    <?php else: ?>
+
     <div class="card shadow-sm">
         <div class="card-header bg-white d-flex justify-content-between align-items-center">
-            <h5 class="mb-0 text-dark">Reporte de Auditoría: <?php echo count($resultados); ?> archivos detectados</h5>
-            <small class="text-muted">Directorio: <?php echo $directorioBase; ?></small>
+            <h5 class="mb-0 text-dark font-weight-bold text-uppercase">Reporte: <?php echo count($resultados); ?> Archivos Detectados</h5>
+            <small class="text-muted"><code><?php echo $directorioBase; ?></code></small>
         </div>
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table table-sm table-hover table-striped mb-0">
-                    <thead class="thead-dark">
+                    <thead class="thead-dark text-center">
                         <tr>
-                            <th class="text-center" style="width: 50px;">#</th>
-                            <th>Ruta del Archivo</th>
-                            <th>Dominios (CDN)</th>
-                            <th class="text-center">Atributo Integrity</th>
-                            <th class="text-center">Licencia</th>
+                            <th>#</th>
+                            <th class="text-left">Ruta del Archivo</th>
+                            <th>Líneas</th>
+                            <th>Encoding / BOM</th>
+                            <th>CDNs/Patrones</th>
+                            <th>Integrity</th>
+                            <th>Licencia</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php if (empty($resultados)): ?>
-                            <tr><td colspan="5" class="text-center py-5 text-muted">No se encontraron archivos con los patrones definidos.</td></tr>
+                            <tr><td colspan="7" class="text-center py-5">No se encontraron archivos que requieran parcheo.</td></tr>
                         <?php else: ?>
                             <?php foreach ($resultados as $index => $res): ?>
                                 <tr>
                                     <td class="text-center font-weight-bold text-secondary"><?php echo $index + 1; ?></td>
-                                    <td class="text-monospace"><?php echo htmlspecialchars($res['archivo']); ?></td>
-                                    <td><span class="text-danger font-weight-bold small"><?php echo $res['dominios']; ?></span></td>
+                                    <td class="text-monospace small"><?php echo htmlspecialchars($res['archivo']); ?></td>
+                                    <td class="text-center"><?php echo number_format($res['lineas']); ?></td>
                                     <td class="text-center">
-                                        <?php if ($res['integrity']): ?>
-                                            <span class="badge badge-danger px-3">CON INTEGRITY</span>
+                                        <span class="badge badge-info"><?php echo $res['encoding']; ?></span>
+                                        <?php if ($res['bom']): ?>
+                                            <span class="badge badge-danger">CON BOM</span>
                                         <?php else: ?>
-                                            <span class="badge badge-success px-3">NO TIENE</span>
+                                            <span class="badge badge-light border text-muted small">Sin BOM</span>
                                         <?php endif; ?>
                                     </td>
+                                    <td class="small text-danger font-weight-bold"><?php echo $res['dominios']; ?></td>
                                     <td class="text-center">
-                                        <?php if ($res['licencia']): ?>
-                                            <span class="badge badge-success px-3">SI</span>
-                                        <?php else: ?>
-                                            <span class="badge badge-danger px-3">NO</span>
-                                        <?php endif; ?>
+                                        <span class="badge badge-<?php echo $res['integrity'] ? 'danger' : 'success'; ?> badge-fixed p-2">
+                                            <?php echo $res['integrity'] ? 'CON INTG' : 'LIMPIO'; ?>
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="badge badge-<?php echo $res['licencia'] ? 'success' : 'danger'; ?> badge-fixed p-2">
+                                            <?php echo $res['licencia'] ? 'SI' : 'NO'; ?>
+                                        </span>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -142,15 +173,16 @@ foreach ($iterator as $archivo) {
             </div>
         </div>
     </div>
-    
+    <?php endif; ?>
+
     <div class="py-5"></div>
 </div>
 
 <footer class="footer mt-auto bg-dark text-white text-center">
     <div class="container d-flex justify-content-between">
-        <span><small>Auditoría Automática de Sistemas</small></span>
-        <span><small>Estatus: <strong>Finalizado</strong></small></span>
-        <span><small>2026</small></span>
+        <span><small>Auditoría de Sistemas (Soberanía Técnica)</small></span>
+        <span><small>Estatus: <strong><?php echo $mbstring_instalada ? 'FINALIZADO' : 'FALLIDO'; ?></strong></small></span>
+        <span><small>Marzo 2026</small></span>
     </div>
 </footer>
 
