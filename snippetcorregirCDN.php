@@ -20,7 +20,18 @@
  * Auditoría de Librerías y Atributos - Ejecución Automática
  * PHP 8.x Procedural + Bootstrap 4.6
  */
-// --- CLÁUSULA DE SEGURIDAD: Verificación de mbstring ---
+// --- 1. CONTROL DE ACCESO POR IP ---
+$ipsAutorizadas = [
+    '127.0.0.1', // Localhost IPv4
+    '::1',       // Localhost IPv6
+    '192.168.1.1', // Ejemplo IP local
+    // Agrega aquí tu IP pública si lo corres en un servidor remoto
+];
+
+$ipVisitante = $_SERVER['REMOTE_ADDR'];
+$accesoConcedido = in_array($ipVisitante, $ipsAutorizadas);
+
+// --- 2. VERIFICACIÓN DE DEPENDENCIAS ---
 $mbstring_instalada = extension_loaded('mbstring');
 
 $directorioBase = __DIR__; 
@@ -37,7 +48,8 @@ $patrones = [
 
 $resultados = [];
 
-if ($mbstring_instalada) {
+// Solo ejecutamos si hay acceso y mbstring está presente
+if ($accesoConcedido && $mbstring_instalada) {
     $directory = new RecursiveDirectoryIterator($directorioBase);
     $iterator = new RecursiveIteratorIterator($directory);
 
@@ -59,13 +71,8 @@ if ($mbstring_instalada) {
             }
 
             if ($encontrado) {
-                // 1. Contar líneas
                 $lineas = count(file($rutaCompleta));
-
-                // 2. Detectar BOM (UTF-8)
                 $bom = (substr($contenido, 0, 3) === pack("CCC", 0xef, 0xbb, 0xbf));
-
-                // 3. Detectar Encoding (Seguro con mbstring)
                 $encoding = mb_detect_encoding($contenido, 'UTF-8', true) ?: 'Otro/Desconocido';
                 
                 $resultados[] = [
@@ -88,7 +95,7 @@ if ($mbstring_instalada) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auditor de Código - Centinela Pro</title>
+    <title>Auditor de Código - Acceso Restringido</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <style>
         body { padding-top: 70px; padding-bottom: 80px; }
@@ -102,77 +109,89 @@ if ($mbstring_instalada) {
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark shadow">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <strong>Gemini 3 Flash</strong> <span class="badge badge-warning ml-2">Scanner v1.4</span>
+            <strong>Gemini 3 Flash</strong> <span class="badge badge-warning ml-2">Scanner v1.5</span>
         </a>
+        <?php if ($accesoConcedido): ?>
+            <span class="navbar-text small text-success font-weight-bold">● IP AUTORIZADA: <?php echo $ipVisitante; ?></span>
+        <?php endif; ?>
     </div>
 </nav>
 
 <div class="container-fluid mt-4">
     
-    <?php if (!$mbstring_instalada): ?>
-        <div class="alert alert-danger shadow">
-            <h4 class="alert-heading font-weight-bold">¡Error Crítico de Dependencia!</h4>
-            <p>La extensión <strong>mbstring</strong> no está instalada o habilitada en este servidor PHP.</p>
-            <hr>
-            <p class="mb-0 small text-monospace text-uppercase">Para corregir: Edita tu php.ini y descomenta extension=mbstring</p>
+    <?php if (!$accesoConcedido): ?>
+        <div class="jumbotron shadow border-danger bg-white text-center mt-5">
+            <h1 class="display-4 text-danger font-weight-bold">Acceso Denegado</h1>
+            <p class="lead">Lo sentimos, esta herramienta de auditoría es de uso privado.</p>
+            <hr class="my-4">
+            <div class="alert alert-warning d-inline-block px-5">
+                La dirección IP <strong><?php echo $ipVisitante; ?></strong> no está autorizada.
+            </div>
+            <p class="mt-4 small text-muted">Por seguridad, este intento de acceso ha sido registrado.</p>
         </div>
-    <?php else: ?>
 
-    <div class="card shadow-sm">
-        <div class="card-header bg-white d-flex justify-content-between align-items-center">
-            <h5 class="mb-0 text-dark font-weight-bold text-uppercase">Reporte: <?php echo count($resultados); ?> Archivos Detectados</h5>
-            <small class="text-muted"><code><?php echo $directorioBase; ?></code></small>
+    <?php elseif (!$mbstring_instalada): ?>
+        <div class="alert alert-danger shadow">
+            <h4 class="alert-heading font-weight-bold">¡Falta mbstring!</h4>
+            <p>Habilita la extensión <code>mbstring</code> en tu configuración de PHP para continuar.</p>
         </div>
-        <div class="card-body p-0">
-            <div class="table-responsive">
-                <table class="table table-sm table-hover table-striped mb-0">
-                    <thead class="thead-dark text-center">
-                        <tr>
-                            <th>#</th>
-                            <th class="text-left">Ruta del Archivo</th>
-                            <th>Líneas</th>
-                            <th>Encoding / BOM</th>
-                            <th>CDNs/Patrones</th>
-                            <th>Integrity</th>
-                            <th>Licencia</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if (empty($resultados)): ?>
-                            <tr><td colspan="7" class="text-center py-5">No se encontraron archivos que requieran parcheo.</td></tr>
-                        <?php else: ?>
-                            <?php foreach ($resultados as $index => $res): ?>
-                                <tr>
-                                    <td class="text-center font-weight-bold text-secondary"><?php echo $index + 1; ?></td>
-                                    <td class="text-monospace small"><?php echo htmlspecialchars($res['archivo']); ?></td>
-                                    <td class="text-center"><?php echo number_format($res['lineas']); ?></td>
-                                    <td class="text-center">
-                                        <span class="badge badge-info"><?php echo $res['encoding']; ?></span>
-                                        <?php if ($res['bom']): ?>
-                                            <span class="badge badge-danger">CON BOM</span>
-                                        <?php else: ?>
-                                            <span class="badge badge-light border text-muted small">Sin BOM</span>
-                                        <?php endif; ?>
-                                    </td>
-                                    <td class="small text-danger font-weight-bold"><?php echo $res['dominios']; ?></td>
-                                    <td class="text-center">
-                                        <span class="badge badge-<?php echo $res['integrity'] ? 'danger' : 'success'; ?> badge-fixed p-2">
-                                            <?php echo $res['integrity'] ? 'CON INTG' : 'LIMPIO'; ?>
-                                        </span>
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="badge badge-<?php echo $res['licencia'] ? 'success' : 'danger'; ?> badge-fixed p-2">
-                                            <?php echo $res['licencia'] ? 'SI' : 'NO'; ?>
-                                        </span>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </tbody>
-                </table>
+
+    <?php else: ?>
+        <div class="card shadow-sm">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0 text-dark font-weight-bold text-uppercase">Auditoría: <?php echo count($resultados); ?> Archivos</h5>
+                <small class="text-muted">Directorio: <code><?php echo $directorioBase; ?></code></small>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover table-striped mb-0">
+                        <thead class="thead-dark text-center">
+                            <tr>
+                                <th>#</th>
+                                <th class="text-left">Ruta del Archivo</th>
+                                <th>Líneas</th>
+                                <th>Encoding / BOM</th>
+                                <th>CDN/Patrones</th>
+                                <th>Integrity</th>
+                                <th>Licencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (empty($resultados)): ?>
+                                <tr><td colspan="7" class="text-center py-5">No se encontraron patrones para corregir.</td></tr>
+                            <?php else: ?>
+                                <?php foreach ($resultados as $index => $res): ?>
+                                    <tr>
+                                        <td class="text-center font-weight-bold text-secondary"><?php echo $index + 1; ?></td>
+                                        <td class="text-monospace small"><?php echo htmlspecialchars($res['archivo']); ?></td>
+                                        <td class="text-center"><?php echo number_format($res['lineas']); ?></td>
+                                        <td class="text-center">
+                                            <span class="badge badge-info"><?php echo $res['encoding']; ?></span>
+                                            <?php if ($res['bom']): ?>
+                                                <span class="badge badge-danger">CON BOM</span>
+                                            <?php else: ?>
+                                                <span class="badge badge-light border text-muted small">Sin BOM</span>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td class="small text-danger font-weight-bold"><?php echo $res['dominios']; ?></td>
+                                        <td class="text-center">
+                                            <span class="badge badge-<?php echo $res['integrity'] ? 'danger' : 'success'; ?> badge-fixed p-2">
+                                                <?php echo $res['integrity'] ? 'CON INTG' : 'LIMPIO'; ?>
+                                            </span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="badge badge-<?php echo $res['licencia'] ? 'success' : 'danger'; ?> badge-fixed p-2">
+                                                <?php echo $res['licencia'] ? 'SI' : 'NO'; ?>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
     <?php endif; ?>
 
     <div class="py-5"></div>
@@ -180,8 +199,8 @@ if ($mbstring_instalada) {
 
 <footer class="footer mt-auto bg-dark text-white text-center">
     <div class="container d-flex justify-content-between">
-        <span><small>Auditoría de Sistemas (Soberanía Técnica)</small></span>
-        <span><small>Estatus: <strong><?php echo $mbstring_instalada ? 'FINALIZADO' : 'FALLIDO'; ?></strong></small></span>
+        <span><small>Auditoría de Sistemas 2026</small></span>
+        <span><small>Estatus: <strong><?php echo ($accesoConcedido && $mbstring_instalada) ? 'ACTIVO' : 'RESTRINGIDO'; ?></strong></small></span>
         <span><small>Marzo 2026</small></span>
     </div>
 </footer>
