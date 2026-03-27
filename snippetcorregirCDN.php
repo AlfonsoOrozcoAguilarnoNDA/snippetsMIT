@@ -45,9 +45,11 @@ $patrones = [
     'cdnjs.cloudflare.com',
     '4.6.3', '4.5.2', '4.5.3',
     '5.15.1', '5.15.2', '5.15.3',
+	'5.3',
     '3.2.1', '3.5.1', '3.6.0', '3.7.0',
     '6.0.0', '6.5.0', '6.5.2',
     'slim', 'popper',
+	'sha256-mUZM63G8m73Mcidfr95Cd94SiTftQnAdBA68nYRwc64=',
     'sha256-XOqroi11tYnBDfnSiK9n7No+34id9mN9F5nOTpL0skw=',
     'code.jquery.com'
 ];
