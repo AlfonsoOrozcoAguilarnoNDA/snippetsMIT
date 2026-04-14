@@ -203,6 +203,8 @@ Activa el sitio:
 sudo a2ensite git.tu-dominio.com.conf
 sudo apache2ctl configtest
 sudo systemctl reload apache2
+
+sudo systemctl restart apache2
 ```
 
 ---
