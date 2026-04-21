@@ -133,6 +133,10 @@ Indispensable en entornos regulados (facturación electrónica, salud, gobierno)
 Para análisis de datos, dashboards o APIs donde Python tiene ventaja real.  
 Siempre en entorno virtual — nunca instalar paquetes pip en el sistema global.
 
+**GO:**  
+Ejecutables y para muchos mas simple de instalar que python.  
+Ventaja ydesventaja, pero rápido.
+
 **Gitea en lugar de GitHub/GitLab:**  
 Control de versiones propio en tu servidor. Un binario de Go sin dependencias.  
 Si los modelos públicos desaparecen o te banean, tu código sigue siendo tuyo.
