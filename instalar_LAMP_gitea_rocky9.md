@@ -351,6 +351,7 @@ Esta es la parte más sencilla del manual. Git está disponible en los repositor
 
 ## Parte 3 — Gitea
 
+Recuerda que yo recomiendo usar Gitea en Debian. En lo personal, yo no lo instalo en Rocky Linux
 ---
 
 ## 9. Apuntar el Subdominio
@@ -370,7 +371,7 @@ Espera a que propague antes de continuar:
 ping git.tu-dominio.com
 ```
 
-No prossigas hasta que responda con la IP correcta.
+No prosigas hasta que responda con la IP correcta.
 
 ---
 
