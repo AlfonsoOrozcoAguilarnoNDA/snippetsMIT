@@ -145,12 +145,15 @@ Rocky Linux 9 trae PHP en sus repositorios base, pero para tener PHP 8.4 con tod
 # Instalar repositorio EPEL (prerequisito de Remi)
 dnf install epel-release -y
 
-# Instalar repositorio Remi
+# Instalar repositorio Remi en Rocky 9
 dnf install https://rpms.remirepo.net/enterprise/remi-release-9.rpm -y
 
-# Habilitar el módulo PHP 8.2 de Remi
+# Instalar repositorio Remi en Rocky 10
+dnf install https://rpms.remirepo.net/enterprise/remi-release-10.rpm -y
+
+# Habilitar el módulo PHP 8.4 de Remi
 dnf module reset php -y
-dnf module enable php:remi-8.2 -y
+dnf module enable php:remi-8.4 -y
 
 # Instalar PHP y extensiones
 dnf install php php-mysqlnd php-curl php-bcmath php-xml \
