@@ -18,7 +18,7 @@
 
 Mi recomendación personal, y la que uso en [vibecodingmexico.com](https://vibecodingmexico.com), es **Debian** para servidores donde quieres control fino: instalas lo que necesitas, lo configuras a tu gusto y sabes exactamente qué hay adentro.
 
-Uso Rocky Linux 9.0 con algunios clientes que no quieren o no pueden actualizar a Rocky 10, debe funcionar con cambios menores.
+Uso Rocky Linux 9.0 con algunos clientes que no quieren o no pueden actualizar a Rocky 10, debe funcionar con cambios menores.
 
 En lo personal, uso Rocky Linux para servidores que no modifico el código, así que se que para mi Rocky Linux es respaldar solo base de datos.
 
