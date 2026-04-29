@@ -1,0 +1,48 @@
+# 1. BLOQUEO DE BOTS POR USER-AGENT
+SetEnvIfNoCase User-Agent "^Baiduspider" block_bot
+SetEnvIfNoCase User-Agent "Amazonbot" block_bot
+SetEnvIfNoCase User-Agent "PetalBot" block_bot
+SetEnvIfNoCase User-Agent "MJ12bot" block_bot
+SetEnvIfNoCase User-Agent "Awario" block_bot
+SetEnvIfNoCase User-Agent "Bytespider" block_bot
+
+# 2. APLICAR BLOQUEOS (Bots e IPs)
+Order Allow,Deny
+Allow from All
+Deny from env=block_bot
+# Lista negra de IPs detectadas
+deny from 37.1.207.98
+deny from 193.142.147.5
+deny from 216.244.66.242
+deny from 185.191.171.14
+deny from 198.144.149.253
+deny from 3.133.142.227
+deny from 185.191.171.0/24
+deny from 193.142.146.202
+deny from 199.167.138.22
+deny from 5.188.211.14
+deny from 5.188.211.21
+deny from 5.188.211.0/24
+deny from 84.38.185.214
+deny from 188.143.232.24
+deny from 188.143.232.14
+deny from 5.189.239.157
+deny from 194.169.175.17
+deny from 194.169.175.10
+deny from 43.134.137.151
+
+# 3. EXCEPCIÓN PARA LA PÁGINA DE ERROR 403
+<Files 403.shtml>
+Order Allow,Deny
+allow from all
+</Files>
+
+# 4. CONFIGURACIÓN DE ERRORES
+ErrorDocument 404 /index.php?module=404
+
+# 5. MOTOR DE REESCRITURA (Redirecciones y HTTPS)
+RewriteEngine On
+
+# A - FORZAR HTTPS (Para todos los dominios y subdominios)
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
