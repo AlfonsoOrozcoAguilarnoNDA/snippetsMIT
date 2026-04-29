@@ -31,7 +31,7 @@ pero si te explota es asunto tuyo.
 
 ---
 
-## 📂 Archivos Disponibles
+## 📂 Algunos Archivos Disponibles (si pongo todos no acabo)
 
 | Archivo | Post de Origen | Generado por | Fecha |
 |---|---|---|---|
@@ -39,7 +39,21 @@ pero si te explota es asunto tuyo.
 | `imagen_dia_claude.php` | Snippet #001: El Experimento de Autorreferencia | Claude | 2026-03 | Con bugs
 
 *(La tabla crece con cada nuevo post)*
+## 🛡️ Destacado: BrucenBanned (Control de acceso forense)
 
+**BrucenBanned** es una herramienta de "Vibecoding" diseñada para detener ataques de fuerza bruta y bots desbocados (como Amazonbot o GPTBot) directamente desde el análisis de los *raw logs* de Apache.
+
+Nació de la necesidad real de gestionar más de 170,000 entradas de log diarias, donde el 33% correspondía a un solo intento de ataque de fuerza bruta.
+
+### Características:
+- **Análisis de Logs:** Importa archivos `.txt` (raw logs de cPanel/Apache).
+- **Acción Inmediata:** Botón de baneo por IP que escribe directamente en el `.htaccess`.
+- **Multidominio:** Una sola base de datos centraliza los bloqueos para todos tus sitios.
+- **Whitelist:** Protección por IP para evitar el auto-baneo.
+- **Stack:** PHP Procedural, MariaDB, Bootstrap 4.6.2 y Font Awesome 5.15.4.
+
+### Ejemplo del Panel:
+![Dashboard de BrucenBanned](brucenbannedexample.png)
 ---
 # 📖 ¿Qué manual necesito?
 
