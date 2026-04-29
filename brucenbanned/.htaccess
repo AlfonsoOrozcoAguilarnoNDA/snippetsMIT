@@ -7,6 +7,7 @@ SetEnvIfNoCase User-Agent "Awario" block_bot
 SetEnvIfNoCase User-Agent "Bytespider" block_bot
 SetEnvIfNoCase User-Agent "DotBot" block_bot
 SetEnvIfNoCase User-Agent "SemrushBot" block_bot
+SetEnvIfNoCase User-Agent "SERankingBacklinksBot" block_bot
 
 # 2. APLICAR BLOQUEOS (Bots e IPs)
 Order Allow,Deny
@@ -34,6 +35,7 @@ deny from 188.143.232.14
 deny from 5.189.239.157
 deny from 194.169.175.17
 deny from 194.169.175.10
+deny from 37.27.51.141
 deny from 43.134.137.151
 
 # 3. EXCEPCIÓN PARA LA PÁGINA DE ERROR 403
@@ -56,6 +58,7 @@ RewriteCond %{HTTP_USER_AGENT} DotBot [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} SemrushBot [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} MJ12bot [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} Awario [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} SERankingBacklinksBot [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} Bytespider [NC]
 
 # A - FORZAR HTTPS (Para todos los dominios y subdominios)
