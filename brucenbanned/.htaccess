@@ -6,6 +6,7 @@ SetEnvIfNoCase User-Agent "MJ12bot" block_bot
 SetEnvIfNoCase User-Agent "Awario" block_bot
 SetEnvIfNoCase User-Agent "Bytespider" block_bot
 SetEnvIfNoCase User-Agent "DotBot" block_bot
+SetEnvIfNoCase User-Agent "SemrushBot" block_bot
 
 # 2. APLICAR BLOQUEOS (Bots e IPs)
 Order Allow,Deny
