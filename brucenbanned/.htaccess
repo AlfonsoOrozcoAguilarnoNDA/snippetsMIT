@@ -17,6 +17,7 @@ deny from 37.1.207.98
 deny from 193.142.147.5
 deny from 216.244.66.242
 deny from 185.191.171.14
+deny from 94.26.106.111
 deny from 198.144.149.253
 deny from 3.133.142.227
 deny from 185.191.171.0/24
