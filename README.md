@@ -47,10 +47,12 @@ Nació de la necesidad real de gestionar más de 170,000 entradas de log diarias
 
 ### Características:
 - **Análisis de Logs:** Importa archivos `.txt` (raw logs de cPanel/Apache).
-- **Acción Inmediata:** Botón de baneo por IP que escribe directamente en el `.htaccess`.
+- **Acción Inmediata:** Botón de baneo por IP que NO escribe directamente en el `.htaccess` peor permite exportar.
 - **Multidominio:** Una sola base de datos centraliza los bloqueos para todos tus sitios.
 - **Whitelist:** Protección por IP para evitar el auto-baneo.
 - **Stack:** PHP Procedural, MariaDB, Bootstrap 4.6.2 y Font Awesome 5.15.4.
+- **Subdirectorio** Brucebanned.
+- **idea** https://github.com/AlfonsoOrozcoAguilarnoNDA/snippetsMIT/tree/main/brucenbanned
 
 ### Ejemplo del Panel:
 ![Dashboard de BrucenBanned](brucenbannedexample.png)
