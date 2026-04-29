@@ -1,12 +1,26 @@
 <?php
 /**
- * SISTEMA: SNIPPET ideentificador / Bloqueador de Ips en base a archivo raw apache
+ * SISTEMA: SNIPPET identificador / Bloqueador de IPs en base a archivo raw apache
  * https://vibecodingmexico.com/snippets-lector-de-raw-logs/
  * FECHA: 29 de abril de 2026
  * LICENCIA: MIT
  * COAUTORÍA: Gemini 3 Flash (v.2026-04) & Alfonso Orozco Aguilar
+ * Fortalecido con Claude  4.6 Sonnet por caos de archivos masivos
  */
 include 'config.php';
+
+// ============================================================
+// CONFIGURACIÓN PARA ARCHIVOS GRANDES (418MB+)
+// Debe ir LO ANTES POSIBLE, antes de cualquier procesamiento
+// ============================================================
+set_time_limit(0);                   // Sin límite de tiempo de ejecución
+ini_set('max_execution_time', '0'); // Doble seguro (algunos servidores ignoran set_time_limit)
+ini_set('memory_limit', '512M');    // Aumentar memoria disponible
+ini_set('max_input_time', '-1');    // Sin límite para recibir input
+
+// Commits parciales cada N registros (evita que MySQL explote en RAM)
+$commit_cada = 500;
+// ============================================================
 
 // 1. SEGURIDAD: Whitelist de IPs
 $whitelist = ['TU_IP_AQUÍ', '187.170.217.123']; 
@@ -25,7 +39,6 @@ if (isset($_POST['ejecutar_importacion'])) {
     if (!file_exists($archivo)) {
         $error = "El archivo ya no existe o fue movido.";
     } else {
-        set_time_limit(900); 
         $handle = fopen($archivo, "r");
         $contador = 0;
 
@@ -68,12 +81,18 @@ if (isset($_POST['ejecutar_importacion'])) {
                 
                 if ($link->query($sql)) {
                     $contador++;
+
+                    // Commit parcial cada $commit_cada registros
+                    // Evita acumular toda la transacción en RAM de MySQL
+                    if ($contador % $commit_cada === 0) {
+                        $link->commit();
+                    }
                 }
             }
         }
         fclose($handle);
         
-        // Guardar cambios en DB
+        // Commit final con los registros restantes
         $link->commit();
         $link->autocommit(TRUE);
 
@@ -142,7 +161,7 @@ if (isset($_POST['ejecutar_importacion'])) {
                     </div>
                     
                     <div class="alert alert-info small">
-                        <strong>Nota de Ingeniería:</strong> El sistema utiliza <code>DateTime::createFromFormat</code> para evitar el error 1970-01-01 y procesa los baneos masivamente al finalizar.
+                        <strong>Nota de Ingeniería:</strong> El sistema utiliza <code>DateTime::createFromFormat</code> para evitar el error 1970-01-01, commits parciales cada <?php echo $commit_cada; ?> registros para archivos grandes, y procesa los baneos masivamente al finalizar.
                     </div>
 
                     <button type="submit" name="ejecutar_importacion" class="btn btn-success btn-block btn-lg">
