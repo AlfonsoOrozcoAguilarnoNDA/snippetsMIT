@@ -1,11 +1,10 @@
 <?php
 /**
- * SISTEMA: SNIPPET ideentificador / Bloqueador de Ips en base a archivo raw apache
+ * SISTEMA: SNIPPET identificador / Bloqueador de Ips en base a archivo raw apache
  * https://vibecodingmexico.com/snippets-lector-de-raw-logs/
  * FECHA: 29 de abril de 2026
  * LICENCIA: MIT
- * COAUTORÍA: Gemini 3 Flash (v.2026-04) & Alfonso Orozco Aguilar
- * DESCRIPCIÓN: Refactorización quirúrgica de cadenas en scripts locales con validación SHA.
+ * COAUTORÍA: Gemini 3 Flash (v.2026-04) & Alfonso Orozco Aguilar 
  */
 include 'config.php';
 
