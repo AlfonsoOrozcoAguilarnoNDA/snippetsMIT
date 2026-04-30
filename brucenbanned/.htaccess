@@ -1,6 +1,7 @@
 # 1. BLOQUEO DE BOTS POR USER-AGENT
 SetEnvIfNoCase User-Agent "^Baiduspider" block_bot
 SetEnvIfNoCase User-Agent "Amazonbot" block_bot
+SetEnvIfNoCase User-Agent "Amzn-SearchBot" block_bot
 SetEnvIfNoCase User-Agent "PetalBot" block_bot
 SetEnvIfNoCase User-Agent "MJ12bot" block_bot
 SetEnvIfNoCase User-Agent "Awario" block_bot
@@ -55,6 +56,7 @@ RewriteEngine On
 
 # Bloqueo de bots por User-Agent (va ANTES de las reglas de HTTPS)
 RewriteCond %{HTTP_USER_AGENT} Amazonbot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} Amzn-SearchBot [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} GPTBot [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} ia_archiver [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} Baiduspider [NC,OR]
