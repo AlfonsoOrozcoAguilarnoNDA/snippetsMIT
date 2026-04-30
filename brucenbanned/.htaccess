@@ -7,6 +7,7 @@ SetEnvIfNoCase User-Agent "Awario" block_bot
 SetEnvIfNoCase User-Agent "Bytespider" block_bot
 SetEnvIfNoCase User-Agent "DotBot" block_bot
 SetEnvIfNoCase User-Agent "SemrushBot" block_bot
+SetEnvIfNoCase User-Agent "AliyunSecBot" block_bot
 SetEnvIfNoCase User-Agent "GPTBot" block_bot
 SetEnvIfNoCase User-Agent "ia_archiver" block_bot
 SetEnvIfNoCase User-Agent "SERankingBacklinksBot" block_bot
@@ -58,6 +59,7 @@ RewriteCond %{HTTP_USER_AGENT} GPTBot [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} ia_archiver [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} Baiduspider [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} PetalBot [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} AliyunSecBot [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} DotBot [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} SemrushBot [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} MJ12bot [NC,OR]
