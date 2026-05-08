@@ -17,7 +17,7 @@
 >
 > Ubuntu 24.04 LTS ("Noble Numbat") es soportado oficialmente por HestiaCP, tiene soporte hasta abril 2029, y siendo el sistema más común en proveedores como Vultr facilita la comunicación con su soporte cuando necesitas que abran puertos específicos. Es la opción más pragmática para producción hoy.
 >
-> **Sobre la IA en Ubuntu:** Canonical anunció integración de IA para Ubuntu 26.10 (octubre 2026) en adelante, completamente opt-in y entregada como Snaps removibles. Ubuntu 24.04 LTS no tiene nada de eso — es un sistema limpio y estable.
+> **Sobre la IA en Ubuntu:** Canonical anunció integración de IA para Ubuntu 26.10 (octubre 2026) en adelante, completamente opt-in y entregada como Snaps removibles. Ubuntu 24.04 LTS no tiene nada de eso — es un sistema limpio y estable. Asegurate de usar la **NORMAL**, no la autopatched / auto updates que puede tener problemas. Lo he visto mas de una vez en otros softwares.
 
 ---
 
