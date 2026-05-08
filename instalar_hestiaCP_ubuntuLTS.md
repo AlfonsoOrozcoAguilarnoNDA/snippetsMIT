@@ -213,7 +213,7 @@ HestiaCP con `--multiphp yes` instala múltiples versiones de PHP. Para WordPres
 - **PHP 8.3** — opción más moderna, compatible con WordPress 6.5+
 - **PHP 8.4** — disponible pero con más posibilidad de incompatibilidades en plugins
 
-> El problema que tuviste en KnownHost con PHP 8.4 es común — muchos plugins aún no están completamente adaptados. Con HestiaCP puedes asignar una versión diferente a cada dominio sin afectar los demás. Empieza con 8.2 o 8.3 y migra cuando tus plugins estén listos.
+> El problema que tuve en mi servidor cpanel con PHP 8.4 es común — cambios de 7.x a 8.x de PHP causa problemas de permisos. Aunque hay otras soluciones, la solución lateral mas simples es esta. Con HestiaCP puedes asignar una versión diferente a cada dominio sin afectar los demás. Yo no uso plugins y usaré 8.4. A t lector , Empieza con 8.2 o 8.3 y migra cuando tus plugins estén listos.
 
 Para cambiar la versión PHP de un dominio:
 
