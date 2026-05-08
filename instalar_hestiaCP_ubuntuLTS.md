@@ -138,12 +138,11 @@ ls -lh hst-install.sh
 ```bash
 bash hst-install.sh \
   --interactive no \
-  --hostname midominio.com \
+  --hostname hestia.midominio.com \
   --email admin@midominio.com \
   --password TuPasswordSeguro123 \
   --lang es \
   --apache no \
-  --multiphp '8.2,8.3,8.4' \
   --clamav no \
   --spamassassin no
 ```
@@ -153,15 +152,11 @@ Te sugiero que cuano te pregunte usuario digas adminh , es decir admin con una h
 
 - `--nginx yes` — servidor web Nginx (LEMP)
 - `--apache no` — sin Apache (no lo necesitas, nginx solo es suficiente)
-- `--phpfpm yes / --multiphp yes` — PHP-FPM con soporte para múltiples versiones simultáneas
-- `--vsftpd no / --proftpd no` — sin FTP (usarás SFTP con SSH, más seguro)
-- `--named yes` — servidor DNS local (necesario para gestionar subdominios desde el panel)
-- `--exim yes / --dovecot yes` — servidor de correo completo (para las notificaciones internas)
 - `--clamav no / --spamassassin no` — sin antivirus ni filtro de spam (consumen RAM; no los necesitas para correo interno)
-- `--mysql yes / --phpmyadmin yes` — MariaDB + phpMyAdmin para gestionar bases de datos
-- `--roundcube yes` — cliente de correo web (accederás desde el navegador)
 
 > El instalador tarda entre 10 y 20 minutos. Al finalizar te muestra las credenciales de acceso al panel. **Anótalas.**
+>
+> Si te equivocaste en algo y te da error,. Ubuntu y sus gracias hacen que sea mejor empezar de cero. Si. Si no ves l oque siga borra el servidor y empieza de nuevo. Es por lo que prefiero Debian.
 
 ### Al terminar verás algo así:
 
