@@ -1,4 +1,4 @@
-[![Cabecera HestiaCP Ubuntu](instalarhestiaCP.jpg)](https://vibnecodingmexico.com)
+[![Cabecera HestiaCP Ubuntu](instalarhestia.jpg)](https://vibnecodingmexico.com)
 
 # 🛠️ Manual: HestiaCP + Ubuntu 24.04 LTS en Vultr
 
@@ -34,9 +34,27 @@
 
 ---
 
+## 🎯 Caso de Uso: Por qué HestiaCP para múltiples WordPress
+
+Tengo entre 10 y 15 dominios con sitios WordPress que no reciben tráfico intenso — son proyectos personales, experimentos o sitios de baja actividad. Mantenerlos dispersos en distintos servidores consume recursos innecesarios y complica la administración.
+
+La solución: consolidarlos en un solo VPS en México para reducir latencia con audiencia mexicana y liberar recursos en otros servidores donde corren proyectos más críticos.
+
+**HestiaCP resuelve esto bien porque:**
+
+- Gestiona múltiples dominios desde un solo panel visual sin tocar la línea de comandos para cada uno
+- Permite una sola base de datos con prefijos distintos por sitio — un solo backup cubre los 15
+- Incluye correo interno con Roundcube, suficiente para recibir notificaciones de actualizaciones de WordPress sin depender de servicios externos
+- El consumo de recursos es bajo comparado con tener cada sitio en infraestructura separada
+- No tiene costo de licencia
+
+No es la solución para sitios de alto tráfico o aplicaciones críticas. Es exactamente lo correcto para consolidar sitios de baja actividad con administración mínima.
+
+---
+
 ## ⚠️ Región México en Vultr — por qué importa
 
-Vultr tiene datacenter en **Ciudad de México** (código `mex`). Para sitios con audiencia mexicana esto reduce latencia de forma significativa frente a usar Dallas o Miami.
+Vultr tiene datacenter en **Ciudad de México** (código `mex`). Para sitios con audiencia mexicana esto reduce latencia de forma significativa frente a usar Dallas o Miami. Usa tu propio país.
 
 Al crear el VPS en Vultr selecciona:
 
