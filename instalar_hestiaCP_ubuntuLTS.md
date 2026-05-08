@@ -33,6 +33,12 @@
 > Abre un bloc de notas y anota: IP del VPS, password root, password del panel HestiaCP, password de MariaDB. Los necesitarás varias veces.
 
 ---
+## Si quieres usar Debian 12 o Rocky Linux
+
+Si quieres usar Debian 12 "Bookworm" en lugar de Ubuntu 24.04 LTS, lo que cambia es mínimo: selecciona Debian 12 x64 en Vultr en vez de Ubuntu, y el resto de la guía es idéntica — mismos comandos apt, hostnamectl, wget y opciones del instalador de HestiaCP. La única diferencia práctica es que al solicitar apertura de puertos de correo en Vultr deberás especificar "Debian 12 con panel de control HestiaCP" en lugar de Ubuntu; el soporte técnico lo maneja igual, aunque Ubuntu es ligeramente más reconocido en su documentación interna. HestiaCP soporta oficialmente ambos sistemas, por lo que no hay riesgo de compatibilidad. Evita Debian 13 "Trixie" — aún no tiene soporte oficial de HestiaCP y el hilo del foro fue cerrado sin resolución.
+
+**En el caso de Rocky Linux cambian los paquetes y las ordenes get, pero  por la capa intermedia de SELinux no lo recomiendo para este caso especial.**
+---
 
 ## 🎯 Caso de Uso: Por qué HestiaCP para múltiples WordPress
 
