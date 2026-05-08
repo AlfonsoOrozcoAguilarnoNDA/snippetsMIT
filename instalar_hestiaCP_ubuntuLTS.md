@@ -1,3 +1,5 @@
+[![Cabecera HestiaCP Ubuntu](instalarhestiaCP.jpg)](https://vibnecodingmexico.com)
+
 # 🛠️ Manual: HestiaCP + Ubuntu 24.04 LTS en Vultr
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
