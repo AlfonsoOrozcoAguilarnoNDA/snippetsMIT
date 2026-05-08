@@ -97,11 +97,24 @@ hostnamectl set-hostname hestia.midominio.com
 ```
 **importante** haz una entrada A que apunte a hestia sino el instalador va a fallar después. 
 
+### Antes de ejecutar el instalador de HestiaCP:
+
+Ve al panel DNS de tu proveedor de dominio y crea:
+
+Tipo:    A
+Nombre:  hestia
+Valor:   TU_IP_DEL_VPS
+TTL:     3600 (o el mínimo que permita tu proveedor)
+
+Verifica que resuelve correctamente con ping o :
+dig hestia.midominio.com +short
+# debe mostrar tu IP del VPS
+
 Verifica:
 
 ```bash
 hostname
-# debe mostrar: midominio.com
+# debe mostrar: hestia.midominio.com
 ```
 
 Edita también `/etc/hosts` para que el servidor se reconozca a sí mismo:
@@ -122,6 +135,11 @@ TU_IP_DEL_VPS   midominio.com
 # FASE 2: Instalación de HestiaCP
 
 ## 3. Descargar e instalar HestiaCP
+
+Es importante verifcar que este instalado  CURL
+```bash
+apt install -y curl wget
+```
 
 HestiaCP tiene un instalador que configura automáticamente Nginx, MariaDB, PHP, Dovecot, Exim (correo) y Roundcube. No necesitas instalar nada por separado.
 
