@@ -36,7 +36,7 @@
 
 ## 🎯 Caso de Uso: Por qué HestiaCP para múltiples WordPress
 
-Tengo entre 10 y 15 dominios con sitios WordPress que no reciben tráfico intenso — son proyectos personales, experimentos o sitios de baja actividad. Mantenerlos dispersos en distintos servidores consume recursos innecesarios y complica la administración.
+Tengo entre 10 y 15 dominios con sitios WordPress que no reciben tráfico intenso — son proyectos personales, experimentos o sitios de baja actividad. Mantenerlos dispersos en distintos servidores consume recursos innecesarios y complica la administración. Actualmente algunos de ellos tienen problemas de permisos por cambios de versiones php 7.x a 8.x en cpanel.
 
 La solución: consolidarlos en un solo VPS en México para reducir latencia con audiencia mexicana y liberar recursos en otros servidores donde corren proyectos más críticos.
 
