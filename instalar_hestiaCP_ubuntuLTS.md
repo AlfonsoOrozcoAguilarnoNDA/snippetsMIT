@@ -147,6 +147,7 @@ bash hst-install.sh \
   --clamav no \
   --spamassassin no
 ```
+Te sugiero que cuano te pregunte usuario digas adminh , es decir admin con una h despues
 
 **Qué instala cada opción:**
 
