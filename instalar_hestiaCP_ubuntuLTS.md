@@ -151,7 +151,7 @@ HestiaCP tiene un instalador que configura automáticamente Nginx, MariaDB, PHP,
 
 ```bash
 # Descargar el instalador oficial
-wget https://raw.githubusercontent.com/hestiacp/hestiacp/release/install/hst-install.sh
+wget https://raw.githubusercontent.com/hestiacp/hestiacp/release/install/hst-install.sh     
 
 # Verificar que se descargó correctamente
 ls -lh hst-install.sh
@@ -190,6 +190,8 @@ Aunque lo he instalado varias veces le veo un problema serio porque en ocasiones
 " no encontro el paquete  o directorio usr/local/hestia/install/deb/ssl/dhparam.pem not such file of directory
 
 Si lo hace en instalaciones limpias, lo veo como un probable error de HestiaCP. No es error tuyo.
+
+Parece ser que su servidor bloquea algunas cosas por cloudflare. Puedes probar a ponerlo a en otra región que no sea México
 
 En instalaciones limpias de Ubuntu 24.04 LTS y Debian 12 desde cero, el script de instalación puede fallar con:
 
