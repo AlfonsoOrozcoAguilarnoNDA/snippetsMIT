@@ -84,7 +84,7 @@ ssh root@TU_IP_VULTR
 apt update && apt upgrade -y
 ```
 
-> No instales Nginx, Apache, PHP, MariaDB ni ningún servidor web manualmente. HestiaCP los instalará y configurará él solo. Si hay algo preinstalado, el instalador de HestiaCP puede fallar o quedar en estado inconsistente.
+> No instales Nginx, Apache, PHP, MariaDB ni ningún servidor web manualmente. HestiaCP los instalará y configurará él solo. Si hay algo preinstalado, el instalador de HestiaCP puede fallar o quedar en estado inconsistente. Inclsuo es posible que te pida desinstalar el apache de Ubuntu.
 
 ---
 
@@ -93,8 +93,9 @@ apt update && apt upgrade -y
 HestiaCP usa el hostname como identidad del servidor de correo. Debe coincidir con el dominio principal.
 
 ```bash
-hostnamectl set-hostname midominio.com
+hostnamectl set-hostname hestia.midominio.com
 ```
+**importante** haz una entrada A que apunte a hestia sino el instalador va a fallar después. 
 
 Verifica:
 
