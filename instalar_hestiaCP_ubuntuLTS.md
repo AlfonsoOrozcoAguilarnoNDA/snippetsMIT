@@ -19,6 +19,9 @@
 >
 > **Sobre la IA en Ubuntu:** Canonical anunció integración de IA para Ubuntu 26.10 (octubre 2026) en adelante, completamente opt-in y entregada como Snaps removibles. Ubuntu 24.04 LTS no tiene nada de eso — es un sistema limpio y estable. Asegurate de usar la **NORMAL**, no la autopatched / auto updates que puede tener problemas. Lo he visto mas de una vez en otro software que depende de Ubuntu.
 
+## Update Estaba a la mitad de esto 2026-may-08 cuando se descubrió la falla Dirty Frag del kernel de linux, por lo cual procedo a borrar el servidor. 
+
+
 ---
 
 ## 📋 Premisas
