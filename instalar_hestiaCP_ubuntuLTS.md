@@ -46,6 +46,7 @@ Server Size:     mínimo 2 GB RAM / 1 vCPU / 50 GB SSD
                  (recomendado 4 GB si corres 10+ WordPress)
 ```
 
+> **Nota Practica:** Puedes crecerlo. No me extrañaria que funcione perfecto en uno de 5 USD. Es l oque voy a hacer yo primero.
 > **Nota de Vultr:** Algunos puertos de correo (25, 465, 587) están bloqueados por defecto en cuentas nuevas. Como cliente con historial, puedes solicitar la apertura explicando el uso (notificaciones internas, no correo masivo). Detalla que es un servidor con panel de control propio y correo local. Ubuntu 24.04 LTS en la solicitud genera menos fricción que sistemas menos conocidos.
 
 ---
