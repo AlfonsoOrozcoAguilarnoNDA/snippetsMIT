@@ -170,7 +170,7 @@ bash hst-install.sh \
   --clamav no \
   --spamassassin no
 ```
-Te sugiero que cuano te pregunte usuario digas adminh , es decir admin con una h despues
+Te sugiero que cuando te pregunte usuario digas adminh , es decir admin con una h despues
 
 **Qué instala cada opción:**
 
@@ -181,6 +181,30 @@ Te sugiero que cuano te pregunte usuario digas adminh , es decir admin con una h
 > El instalador tarda entre 10 y 20 minutos. Al finalizar te muestra las credenciales de acceso al panel. **Anótalas.**
 >
 > Si te equivocaste en algo y te da error,. Ubuntu y sus gracias hacen que sea mejor empezar de cero. Si. Si no ves l oque siga borra el servidor y empieza de nuevo. Es por lo que prefiero Debian.
+
+### ⚠️ Posible error del instalador de HestiaCP
+
+Recuerda que HESTIACP es un sistema menor que puede tener fallas.
+
+Aunque lo he instalado varias veces le veo un problema serio porque en ocasiones desde cero me da
+" no encontro el paquete  o directorio usr/local/hestia/install/deb/ssl/dhparam.pem not such file of directory
+
+Si lo hace en instalaciones limpias, lo veo como un probable error de HestiaCP. No es error tuyo.
+
+En instalaciones limpias de Ubuntu 24.04 LTS y Debian 12 desde cero, el script de instalación puede fallar con:
+
+Error: cannot stat '/usr/local/hestia/install/deb/ssl/dhparam.pem': No such file or directory
+
+
+Esto indica que los paquetes `.deb` de HestiaCP no se extrajeron correctamente a `/usr/local/hestia/`, aunque el script de instalación reporte éxito. El directorio `/usr/local/hestia/install/deb/` debería contener los archivos de configuración base tras la instalación de paquetes vía `apt`.
+
+**Si ocurre:** la instalación quedó incompleta. No intentes repararla manualmente — el panel puede funcionar parcialmente pero con fallos ocultos en SSL, correo o firewall. La solución recomendada por el equipo de HestiaCP es reinstalar el sistema operativo desde cero y volver a ejecutar el instalador.
+
+**Verificación post-instalación:**
+
+```bash
+ls /usr/local/hestia/install/deb/ssl/dhparam.pem
+# Si no existe, la instalación falló silenciosamente
 
 ### Al terminar verás algo así:
 
