@@ -136,27 +136,15 @@ ls -lh hst-install.sh
 
 ```bash
 bash hst-install.sh \
-  --nginx yes \
-  --apache no \
-  --phpfpm yes \
-  --multiphp yes \
-  --vsftpd no \
-  --proftpd no \
-  --named yes \
-  --exim yes \
-  --dovecot yes \
-  --sieve no \
-  --clamav no \
-  --spamassassin no \
-  --mysql yes \
-  --postgresql no \
-  --mysql8 no \
-  --phpmyadmin yes \
-  --roundcube yes \
+  --interactive no \
   --hostname midominio.com \
   --email admin@midominio.com \
   --password TuPasswordSeguro123 \
-  --lang es
+  --lang es \
+  --apache no \
+  --multiphp '8.2,8.3,8.4' \
+  --clamav no \
+  --spamassassin no
 ```
 
 **Qué instala cada opción:**
