@@ -39,6 +39,12 @@ pero si te explota es asunto tuyo.
 | `imagen_dia_claude.php` | Snippet #001: El Experimento de Autorreferencia | Claude | 2026-03 | Con bugs
 
 *(La tabla crece con cada nuevo post)*
+## 🛡️ Destacado: BItacora de USO LLM y deegradación
+Con la degradación de febrero marzo de 2026, hice este script con kimi. esta como llmbitacora.php
+
+![Ejemplo](ejemplobitacora.png)
+
+**BrucenBanned** es una herramienta de "Vibecoding" diseñada para detener ataques de fuerza bruta y bots desbocados (como Amazonbot o GPTBot) directamente desde el análisis de los *raw logs* de Apache.
 ## 🛡️ Destacado: BrucenBanned (Control de acceso forense)
 
 **BrucenBanned** es una herramienta de "Vibecoding" diseñada para detener ataques de fuerza bruta y bots desbocados (como Amazonbot o GPTBot) directamente desde el análisis de los *raw logs* de Apache.
