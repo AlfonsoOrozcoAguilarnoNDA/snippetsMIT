@@ -1,4 +1,4 @@
-[![Cabecera HestiaCP Ubuntu](instalarhestia.jpg)](https://vibnecodingmexico.com)
+[![Cabecera HestiaCP Ubuntu](instalarhestia.jpg)](https://vibecodingmexico.com)
 
 # 🛠️ Manual: HestiaCP + Ubuntu 24.04 LTS en Vultr
 
