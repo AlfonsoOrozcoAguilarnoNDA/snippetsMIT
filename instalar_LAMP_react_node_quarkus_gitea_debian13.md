@@ -328,7 +328,7 @@ hash -r
 
 ### ¿Por qué Vite y no Create React App?
 
-Create React App está deprecado. Vite es el estándar actual: más rápido, más ligero y con mejor soporte de la comunidad.
+Create React App está depreciado/obsoleto. Vite es el estándar actual: más rápido, más ligero y con mejor soporte de la comunidad.
 
 ### Advertencia de seguridad previa (lee esto antes de instalar)
 
