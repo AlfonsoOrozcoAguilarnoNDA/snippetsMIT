@@ -6,7 +6,7 @@
 
 # Manual: LAMP + Git + Gitea en Rocky Linux 9 (Vultr)
 
-**Stack:** LAMP (Rocky Linux 9) + SSL Certbot + PHP 8.2 + Git + Gitea  
+**Stack:** LAMP (Rocky Linux 9) + SSL Certbot + PHP 8.4 + Git + Gitea  
 **Plataforma base:** Vultr VPS — La Maravilla de 5 USD  
 **Fecha de redacción:** Marzo 2026
 
@@ -321,7 +321,7 @@ Para el uso normal de este manual, el contexto por defecto de `/var/www` ya est�
 El dominio debe apuntar a la IP del VPS antes de ejecutar esto. Consulta el post [Apuntar Dominio a Vultr](https://vibecodingmexico.com/apuntar-dominio-a-vultr/) si necesitas ese paso.
 
 ```bash
-dnf install certbot python3-certbot-apache -y
+dnf install certbot python3-certbot-apache
 
 certbot --apache -d tu-dominio.com -d www.tu-dominio.com
 
