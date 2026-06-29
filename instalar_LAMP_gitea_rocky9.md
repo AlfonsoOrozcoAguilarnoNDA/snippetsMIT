@@ -323,7 +323,8 @@ El dominio debe apuntar a la IP del VPS antes de ejecutar esto. Consulta el post
 ```bash
 dnf install certbot python3-certbot-apache
 
-certbot --apache -d tu-dominio.com -d www.tu-dominio.com
+sudo certbot --apache -d tu-dominio.com -d www.tu-dominio.com
+
 
 # Verificar renovación automática
 systemctl status certbot-renew.timer
