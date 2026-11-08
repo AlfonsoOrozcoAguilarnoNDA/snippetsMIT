@@ -42,6 +42,28 @@ Una forma rápida de verlo todo: ejecutar `airgapped.php?test=1` en el navegador
 
 ---
 
+## Nota Sobre  Moprosoft CMMI normas iso 27001:2022
+
+Moprosoft es la Norma Mexicana NMX-I-059-NYCE. Fue adoptada como norma mexicana en 2005, y se compone de varias partes: la 01 define conceptos y productos, la 02 establece los requisitos de procesos (el modelo MoProSoft propiamente dicho), la 03 es la guía de implantación y la 04 son las directrices de evaluación (EvalProSoft). Hay versiones de 2005, 2011 y 2016. La Parte 2 de 2016 figura como vigente y cancela la de 2011. De MoProSoft salió además la norma internacional ISO/IEC 29110 para entidades muy pequeñas (está basada en la norma mexicana). 
+
+La evaluación de Moprosoft también trabaja con niveles de capacidad (la evaluación se basa en ISO/IEC 15504), así que hay qe considerar si tienen CMMI de que nivel o razón técnica por la que usan CMMI.
+
+Lo que sí es cierto, en la práctica:
+
+En el caso de Iso 27001 Su Anexo A reúne controles agrupados en cuatro temas (organizacionales, de personas, físicos y tecnológicos): 
+
+- Antivirus y protección contra malware
+- Control de accesos, incluyendo cuentas de solo lectura y mínimo privilegio
+- Medios removibles (USB) y dispositivos personales
+- Gestión de cambios, que se enlaza con lo "bomberazos"
+- Respaldos, bitácoras y separación de entornos
+
+**ISO27001 Es certificable y de pago. Al igual que con Moprosoft, hablar de “conformidad” requiere una auditoría formal.**
+
+Ninguno de los dos es software. Son modelos de prácticas, y se pueden aplicar sin conexión. Moprosoft está pensado para organizaciones pequeñas y medianas, con procesos más ligeros y plantillas de productos de trabajo (manual de mantenimiento, de operación, trazabilidad). Eso lo hace más cómodo para un análisis de un sistema legacy que CMMI, que es más pesado de montar. Por lo mismo usar como estructura de documentación. Escribe “estructura al estilo Moprosoft” o “alineado a” y no “conforme a Moprosoft”. Declarar conformidad requiere una evaluación formal por una entidad acreditada, y probablemente lmno lo tengan ni de ISO 27001.
+
+---
+
 ## Cómo llevarlo al entorno aislado y entender la política operativa.
 
 1. **Preferido:** el archivo `airgapped.php` por el medio que autorice el área de sistemas. Verificar que llegó íntegro comparando su hash (`sha256sum airgapped.php`) contra el del original.
