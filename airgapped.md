@@ -11,7 +11,7 @@ Funciones PHP de apoyo para analizar bases de código legacy en entornos **air-g
 
 ## Qué es y para qué sirve
 
-En un entorno air-gapped no hay Composer, ni CDNs, ni StackOverflow, ni forma de descargar una librería si algo falla. Cuando se llega a un sistema legacy desconocido (código PHP viejo, base MySQL sin documentación, sin ayuda externa) hacen falta unas cuantas herramientas pequeñas, autocontenidas y probadas de antemano.
+En un entorno air-gapped no hay Composer, ni CDNs, no Inteligencia Artificial o LLM, ni StackOverflow, ni forma de descargar una librería si algo falla. Cuando se llega a un sistema legacy desconocido (código PHP viejo, base MySQL sin documentación, sin ayuda externa) hacen falta unas cuantas herramientas pequeñas, autocontenidas y probadas de antemano.
 
 Este kit reúne las funciones de apoyo necesarias para el primer reconocimiento:
 
@@ -47,7 +47,7 @@ Una forma rápida de verlo todo: ejecutar `airgapped.php?test=1` en el navegador
 1. **Preferido:** el archivo `airgapped.php` por el medio que autorice el área de sistemas. Verificar que llegó íntegro comparando su hash (`sha256sum airgapped.php`) contra el del original.
 2. **Respaldo:** imprimir este `.md` (o su PDF) y teclear solo lo que haga falta. Por eso el código completo está en este documento.
 3. Guardar siempre en **UTF-8 sin BOM**. Un BOM o un espacio antes de `<?php` provoca "headers already sent".
-
+4. Pregunta clave: ¿Hay alguna forma autorizada de pasar un archivo a mi equipo de trabajo (USB aprobado, carpeta compartida, un equipo de transferencia)? Explicar que es para funciones de apoyo necesarias en Legacy.
 ---
 
 ## Código
@@ -341,7 +341,7 @@ grep -rl "mysqli_connect\|mysql_connect\|new mysqli" /ruta --include=*.php
 
 MIT License
 
-Copyright (c) 2026 Alfonso
+Copyright (c) 2026 Alfonso Orozco Aguilar
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
