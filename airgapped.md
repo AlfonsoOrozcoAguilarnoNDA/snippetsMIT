@@ -42,12 +42,15 @@ Una forma rápida de verlo todo: ejecutar `airgapped.php?test=1` en el navegador
 
 ---
 
-## Cómo llevarlo al entorno aislado
+## Cómo llevarlo al entorno aislado y entender la política operativa.
 
 1. **Preferido:** el archivo `airgapped.php` por el medio que autorice el área de sistemas. Verificar que llegó íntegro comparando su hash (`sha256sum airgapped.php`) contra el del original.
 2. **Respaldo:** imprimir este `.md` (o su PDF) y teclear solo lo que haga falta. Por eso el código completo está en este documento.
 3. Guardar siempre en **UTF-8 sin BOM**. Un BOM o un espacio antes de `<?php` provoca "headers already sent".
 4. Pregunta clave: ¿Hay alguna forma autorizada de pasar un archivo a mi equipo de trabajo (USB aprobado, carpeta compartida, un equipo de transferencia)? Explicar que es para funciones de apoyo necesarias en Legacy.
+5. Si te dan un Linux o un Mac de trabajo, pide además acceso a una máquina con la misma imagen que usan los operadores, o a una virtual, para la prueba final. Sin eso, tu veredicto sobre las pantallas de administración tendría un asterisco.
+6. Sobre Windows, la actualización y el antivirus son responsabilidad del área de sistemas del cliente, no tuya. Lo que sí te toca es pedirles la misma configuración que tienen los operadores (mismo navegador, mismas políticas), y no tocar nada de actualizaciones ni antivirus aunque tengas permisos. Documentar qué versión encuentras sí es parte de tu análisis.
+7. Hay que saber que versión de antivirus es. Docvumentarlo internamente como Fecha, equipo, hallazgo: sin antivirus (o definiciones desactivadas desde X). Se informó a [persona/área] el [fecha]. Respuesta: [lo que digan, o “pendiente”].
 ---
 
 ## Código
