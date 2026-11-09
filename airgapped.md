@@ -72,7 +72,7 @@ Ninguno de los dos es software. Son modelos de prácticas, y se pueden aplicar s
 4. Pregunta clave: ¿Hay alguna forma autorizada de pasar un archivo a mi equipo de trabajo (USB aprobado, carpeta compartida, un equipo de transferencia)? Explicar que es para funciones de apoyo necesarias en Legacy.
 5. Si te dan un Linux o un Mac de trabajo, pide además acceso a una máquina con la misma imagen que usan los operadores, o a una virtual, para la prueba final. Sin eso, tu veredicto sobre las pantallas de administración tendría un asterisco.
 6. Sobre Windows, la actualización y el antivirus son responsabilidad del área de sistemas del cliente, no tuya. Lo que sí te toca es pedirles la misma configuración que tienen los operadores (mismo navegador, mismas políticas), y no tocar nada de actualizaciones ni antivirus aunque tengas permisos. Documentar qué versión encuentras sí es parte de tu análisis.
-7. Hay que saber que versión de antivirus es. Docvumentarlo internamente como Fecha, equipo, hallazgo: sin antivirus (o definiciones desactivadas desde X). Se informó a [persona/área] el [fecha]. Respuesta: [lo que digan, o “pendiente”].
+7. Hay que saber que versión de antivirus es. Documentarlo internamente como Fecha, equipo, hallazgo: sin antivirus (o definiciones desactivadas desde X). Se informó a [persona/área] el [fecha]. Respuesta: [lo que digan, o “pendiente”].
 ---
 
 ## Código
