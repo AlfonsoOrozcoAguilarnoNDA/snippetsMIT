@@ -46,7 +46,7 @@ Una forma rápida de verlo todo: ejecutar `airgapped.php?test=1` en el navegador
 
 Moprosoft es la Norma Mexicana NMX-I-059-NYCE. Fue adoptada como norma mexicana en 2005, y se compone de varias partes: la 01 define conceptos y productos, la 02 establece los requisitos de procesos (el modelo MoProSoft propiamente dicho), la 03 es la guía de implantación y la 04 son las directrices de evaluación (EvalProSoft). Hay versiones de 2005, 2011 y 2016. La Parte 2 de 2016 figura como vigente y cancela la de 2011. De MoProSoft salió además la norma internacional ISO/IEC 29110 para entidades muy pequeñas (está basada en la norma mexicana). 
 
-La evaluación de Moprosoft también trabaja con niveles de capacidad (la evaluación se basa en ISO/IEC 15504), así que hay qe considerar si tienen CMMI de que nivel o razón técnica por la que usan CMMI.
+La evaluación de Moprosoft también trabaja con niveles de capacidad (la evaluación se basa en ISO/IEC 15504), así que hay que considerar si tienen CMMI de que nivel o razón técnica por la que usan CMMI.
 
 Lo que sí es cierto, en la práctica:
 
@@ -60,7 +60,7 @@ En el caso de Iso 27001 Su Anexo A reúne controles agrupados en cuatro temas (o
 
 **ISO27001 Es certificable y de pago. Al igual que con Moprosoft, hablar de “conformidad” requiere una auditoría formal.**
 
-Ninguno de los dos es software. Son modelos de prácticas, y se pueden aplicar sin conexión. Moprosoft está pensado para organizaciones pequeñas y medianas, con procesos más ligeros y plantillas de productos de trabajo (manual de mantenimiento, de operación, trazabilidad). Eso lo hace más cómodo para un análisis de un sistema legacy que CMMI, que es más pesado de montar. Por lo mismo usar como estructura de documentación. Escribe “estructura al estilo Moprosoft” o “alineado a” y no “conforme a Moprosoft”. Declarar conformidad requiere una evaluación formal por una entidad acreditada, y probablemente lmno lo tengan ni de ISO 27001.
+Ninguno de los dos es software. Son modelos de prácticas, y se pueden aplicar sin conexión. Moprosoft está pensado para organizaciones pequeñas y medianas, con procesos más ligeros y plantillas de productos de trabajo (manual de mantenimiento, de operación, trazabilidad). Eso lo hace más cómodo para un análisis de un sistema legacy que CMMI, que es más pesado de montar. Por lo mismo usar como estructura de documentación. Escribe “estructura al estilo Moprosoft” o “alineado a” y no “conforme a Moprosoft”. Declarar conformidad requiere una evaluación formal por una entidad acreditada, y probablemente no lo tengan ni de ISO 27001.
 
 ---
 
@@ -68,7 +68,7 @@ Ninguno de los dos es software. Son modelos de prácticas, y se pueden aplicar s
 
 1. **Preferido:** el archivo `airgapped.php` por el medio que autorice el área de sistemas. Verificar que llegó íntegro comparando su hash (`sha256sum airgapped.php`) contra el del original.
 2. **Respaldo:** imprimir este `.md` (o su PDF) y teclear solo lo que haga falta. Por eso el código completo está en este documento.
-3. Guardar siempre en **UTF-8 sin BOM**. Un BOM o un espacio antes de `<?php` provoca "headers already sent".
+3. Guardar siempre en **UTF-8 sin BOM**. Un BOM o un espacio antes de `<?php` provoca "headers already sent". 4. y después de <?php sin espacios ni BOM previos
 4. Pregunta clave: ¿Hay alguna forma autorizada de pasar un archivo a mi equipo de trabajo (USB aprobado, carpeta compartida, un equipo de transferencia)? Explicar que es para funciones de apoyo necesarias en Legacy.
 5. Si te dan un Linux o un Mac de trabajo, pide además acceso a una máquina con la misma imagen que usan los operadores, o a una virtual, para la prueba final. Sin eso, tu veredicto sobre las pantallas de administración tendría un asterisco.
 6. Sobre Windows, la actualización y el antivirus son responsabilidad del área de sistemas del cliente, no tuya. Lo que sí te toca es pedirles la misma configuración que tienen los operadores (mismo navegador, mismas políticas), y no tocar nada de actualizaciones ni antivirus aunque tengas permisos. Documentar qué versión encuentras sí es parte de tu análisis.
