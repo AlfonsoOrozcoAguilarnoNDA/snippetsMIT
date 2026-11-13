@@ -1044,14 +1044,31 @@ mariadb -e "DROP DATABASE prueba_restauracion;"
 
 ## 🧪 Notas del Autor
 
-Este repositorio es parte de los experimentos documentados en **[vibecodingmexico.com](https://vibecodingmexico.com)**.
+Este repositorio NO es parte de los experimentos documentados en **[vibecodingmexico.com](https://vibecodingmexico.com)**.
 
-El código aquí publicado fue generado con asistencia de LLMs — se documenta cuál modelo generó qué y en qué fecha, porque eso es parte del experimento. Los modelos cambian. Los resultados de hoy no garantizan los resultados de mañana. Por eso se fecha todo.
+## 🤔 ¿Por qué existe este manual?
 
-- **Borrador inicial:** DeepSeek, 13 de noviembre de 2026.
-- **Revisión y correcciones:** Claude Sonnet 5.5 (Anthropic), 13 de noviembre de 2026. Los comandos no se probaron todavía en un Debian 13 limpio: el primer despliegue real es la prueba.
+Una cosa es probar un sistema en un LAMP con Apache para cinco usuarios, y otra muy distinta es poner en producción una aplicación para 250 usuarios que trabajan al mismo tiempo con datos financieros. Para lo primero basta un despliegue simple (que ya tengo documentado en otro lado). Para lo segundo hace falta una arquitectura de varias piezas, y cada pieza resuelve un problema distinto.
 
-Mi nombre es **Alfonso Orozco Aguilar**, mexicano, programador desde 1991.
+250 usuarios no son 250 peticiones simultáneas, pero sí bastantes para que un solo proceso sin supervisión se convierta en el cuello de botella, y en un sistema financiero una caída o un bloqueo cuestan dinero real.
+
+**La analogía del restaurante**
+
+- **El servidor de desarrollo de Flask** es un chef que además atiende las mesas: toma la orden, cocina, sirve y cobra, una mesa a la vez. Sirve para probar recetas, no para un restaurante lleno. Si se cae, nadie lo reemplaza.
+- **Gunicorn** es un equipo de meseros: toman varias órdenes en paralelo y dejan al chef (tu código Flask) concentrarse en cocinar. Si un mesero falla, el proceso maestro pone otro.
+- **Nginx** es el anfitrión de la puerta: recibe a los clientes, maneja el HTTPS, retiene a los lentos para que no ocupen a los meseros y los manda a la mesa correcta (`/crm/`, `/api/`).
+- **systemd** es el gerente que abre el restaurante cada mañana y reemplaza a quien no llegó.
+
+En entornos serios debe usarse Gunicorn u otro servidor WSGI, detrás de un proxy inverso. El servidor de desarrollo de Flask no está pensado para producción.
+
+**Por qué exige más experiencia**
+
+Un despliegue simple falla de forma obvia. Este falla de formas sutiles: un 502 por el permiso de un socket, un servicio que no arranca porque un directorio pertenece a otro usuario, una cookie de sesión que se pisa entre apps. Hay que entender a la vez sockets Unix, usuarios del sistema, systemd, proxy inverso y certificados. Por eso el manual incluye un diagnóstico de las cuatro apps en un comando (Anexo 6) y una guía de fallas (Anexo 3).
+
+- **Borrador inicial:** 13 de noviembre de 2026.
+- **Revisión y correcciones:** Claude Sonnet 5.5 (Anthropic), 13 de noviembre de 2026. Los comandos ya se probaron todavía en un Debian 13 limpio: el primer despliegue real fue la prueba.
+
+Mi nombre es **Alfonso Orozco Aguilar**, mexicano, programador desde 1991. y DEVOPS
 
 ---
 
