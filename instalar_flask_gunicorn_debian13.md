@@ -1066,7 +1066,7 @@ En entornos serios debe usarse Gunicorn u otro servidor WSGI, detrás de un prox
 Un despliegue simple falla de forma obvia. Este falla de formas sutiles: un 502 por el permiso de un socket, un servicio que no arranca porque un directorio pertenece a otro usuario, una cookie de sesión que se pisa entre apps. Hay que entender a la vez sockets Unix, usuarios del sistema, systemd, proxy inverso y certificados. Por eso el manual incluye un diagnóstico de las cuatro apps en un comando (Anexo 6) y una guía de fallas (Anexo 3).
 
 - **Borrador inicial:** 13 de noviembre de 2026.
-- **Revisión y correcciones:** Claude Sonnet 5.5 (Anthropic), 13 de noviembre de 2026. Los comandos ya se probaron todavía en un Debian 13 limpio: el primer despliegue real fue la prueba.
+- **Revisión y correcciones:** Claude Sonnet 5.5 (Anthropic), 13 de noviembre de 2026. Los comandos YA SE PROBARON en un Debian 13 limpio: el primer despliegue real fue la prueba.
 
 Mi nombre es **Alfonso Orozco Aguilar**, mexicano, programador desde 1991. y DEVOPS
 
