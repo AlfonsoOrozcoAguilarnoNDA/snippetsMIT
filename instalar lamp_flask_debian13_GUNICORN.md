@@ -31,7 +31,7 @@
 
 No doy guía de instalación de PHP debido a que no sé cuál es la que se usa, pero debe funcionar con los procedimientos estándar; no documento porque no sé cuál es el procedimiento estándar que usa el lector o la empresa para PHP en entorno financiero, en cuanto a módulos y versiones.
 
-- NO es omisión es decisión deliberada. Se sugiere 8.4.27 al 17/nov/226
+- NO es omisión es decisión deliberada. Se sugiere 8.4.27 al 17/nov/2026
 
 ---
 
