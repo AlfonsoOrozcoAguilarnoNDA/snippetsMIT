@@ -1,5 +1,9 @@
 # Solicitud Técnica y Guía de Extracción: Diagnóstico de Procedimientos Almacenados (MySQL / MariaDB)
 
+- Licencia MIT
+- Autor Alfonso Orozco Aguilar
+- Fecha 23 Noviembre 2026
+
 > **⚠️ AVISO DE ALCANCE Y RESPONSABILIDAD**  
 > Este documento **no constituye un plan de trabajo formal, cronograma ni compromiso de entrega**. Define únicamente los **pasos mínimos previos indispensables** de diagnóstico técnico.  
 > **Caso de uso:** Verificar y comparar el estado estructural de las bases de datos y sus rutinas (*Stored Procedures*) entre distintos servidores productivos. Debido a políticas de segregación de funciones y seguridad de la información, **estos comandos deben ser ejecutados exclusivamente por un tercero autorizado (equipo de Infraestructura / DBA)** sin otorgar acceso directo a producción al equipo de auditoría/desarrollo.
