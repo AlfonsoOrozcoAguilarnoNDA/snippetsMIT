@@ -321,7 +321,16 @@ Nota: Para pruebas temporales en tu navegador quiza quieras :
 -  http://TU_IP:5000
 -  delete allow 5000/tcp  cuando termines tus pruebas
 
-Esto permite Probar Flask rápido. Por cierto, aqui hay guías de gunicorn tanto para apache como para Nginx.
+Esto permite Probar Flask rápido. 
+
+- Tip : Un error común es que tu app no funcione por algun error del script. Hay unos ejemplos de scripts básicos para que los pruebes, en directorio python_basico en este repositorio.
+- 
+- - app.py muestra un texto en azul, por https://tu-dominio.com:5000 en texto azul
+  - monitor.py prueba el modo terminal.
+ 
+  - Es necesario Confiar en ti mismo. Es frecuente que el script esté mal y no tu servidor.
+ 
+  - Por cierto, aqui hay guías de gunicorn tanto para apache como para Nginx.
 
 ---
 
