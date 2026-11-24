@@ -314,6 +314,14 @@ source venv/bin/activate
 pip install flask
 ```
 
+Nota: Para pruebas temporales en tu navegador quiza quieras :
+
+-  sudo ufw allow 5000/tcp
+-  http://TU_IP:5000
+-  delete allow 5000/tcp
+
+Esto permite Probar Flask rápido. Por cierto, aqui hay guías de gunicorn tanto para apache como para Nginx.
+
 ---
 
 ## 9. Respaldos: Comprimir Directorios (el WinZip de Linux)
