@@ -317,8 +317,9 @@ pip install flask
 Nota: Para pruebas temporales en tu navegador quiza quieras :
 
 -  sudo ufw allow 5000/tcp
+-  Arranca el script: python app.py (deja esa terminal corriendo).
 -  http://TU_IP:5000
--  delete allow 5000/tcp
+-  delete allow 5000/tcp  cuando termines tus pruebas
 
 Esto permite Probar Flask rápido. Por cierto, aqui hay guías de gunicorn tanto para apache como para Nginx.
 
