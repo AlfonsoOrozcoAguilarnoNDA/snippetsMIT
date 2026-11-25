@@ -325,7 +325,9 @@ Esto permite Probar Flask rápido.
 
 - Tip : Un error común es que tu app no funcione por algun error del script. Hay unos ejemplos de scripts básicos para que los pruebes, en directorio python_basico en este repositorio.
 - 
-- - app.py muestra un texto en azul, por https://tu-dominio.com:5000 en texto azul
+- - app.py muestra un texto en azul, por http://tu-dominio.com:5000 en texto azul
+  - Prueba por HTTP en http://<tu-ip>:5000 o http://<tu-dominio.com>:5000 , sin la letra s.
+
   - monitor.py prueba el modo terminal.
  
   - Es necesario Confiar en ti mismo. Es frecuente que el script esté mal y no tu servidor.
