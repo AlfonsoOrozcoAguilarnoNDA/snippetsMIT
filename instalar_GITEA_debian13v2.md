@@ -404,9 +404,6 @@ revisa el repositorio **SnippetsLGPL**.
 ---
 
 ## ✍️ Acerca del Autor
-Este repositorio es parte de los experimentos documentados en
-**[vibecodingmexico.com](https://vibecodingmexico.com)**.
-
 Mi nombre es **Alfonso Orozco Aguilar**, mexicano, programador desde 1991.
 
 
