@@ -110,6 +110,20 @@ sudo chmod 770 /etc/gitea
 
 Descarga el binario oficial. Verifica la versión más reciente en https://dl.gitea.com/gitea/
 
+Usa solo una de las dos que estoy poniendo aquí. Hubo un cambio mayor, te recomiendo la 28.
+
+```bash
+sudo wget -O /usr/local/bin/gitea \
+  https://dl.gitea.com/gitea/28.4.0/gitea-28.4.0-linux-amd64
+
+sudo chmod +x /usr/local/bin/gitea
+
+# Verificar
+gitea --version
+
+```
+La siguiente versión es Safe , de la rama anterior. Usala si no puedes con la 28
+
 ```bash
 sudo wget -O /usr/local/bin/gitea \
   https://dl.gitea.com/gitea/1.22.3/gitea-1.22.3-linux-amd64
