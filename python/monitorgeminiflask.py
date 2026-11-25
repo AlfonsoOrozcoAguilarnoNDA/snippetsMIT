@@ -3,7 +3,6 @@
 # Licencia MIT
 # Alfonso Orozco Aguilar 24 / nov / 2026
 # Monitor de sistema en Python + Flask (puerto 5000)
-# NO ES PARA TERMINAL
 
 import os
 import platform
@@ -130,4 +129,46 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                             <span class="badge badge-secondary">1 Min</span>
                         </div>
                         <div class="col-4">
-                            <h3 class="font-weight-bold">{{ "%.2f"|format(data.load[1
+                            <h3 class="font-weight-bold">{{ "%.2f"|format(data.load[1]) }}</h3>
+                            <span class="badge badge-secondary">5 Min</span>
+                        </div>
+                        <div class="col-4">
+                            <h3 class="font-weight-bold">{{ "%.2f"|format(data.load[2]) }}</h3>
+                            <span class="badge badge-secondary">15 Min</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card p-4">
+                    <h5><i class="fas fa-memory mr-2 text-danger"></i>Memoria RAM</h5>
+                    <p class="mb-1 text-muted">Uso: {{ "%.2f"|format(data.mem[1]) }} GB / {{ "%.2f"|format(data.mem[0]) }} GB ({{ "%.1f"|format(data.mem[2]) }}%)</p>
+                    <div class="progress">
+                        <div class="progress-bar bg-danger" style="width: {{ "%.1f"|format(data.mem[2]) }}%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="card p-4">
+                    <h5><i class="fas fa-hdd mr-2 text-secondary"></i>Disco Duro</h5>
+                    <p class="mb-1 text-muted">Uso: {{ "%.2f"|format(data.disk[1]) }} GB / {{ "%.2f"|format(data.disk[0]) }} GB ({{ "%.1f"|format(data.disk[2]) }}%)</p>
+                    <div class="progress">
+                        <div class="progress-bar bg-secondary" style="width: {{ "%.1f"|format(data.disk[2]) }}%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>"""
+
+
+@app.route('/')
+def index():
+    return render_template_string(HTML_TEMPLATE, data=get_sys_info())
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=False)
