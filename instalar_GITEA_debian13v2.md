@@ -340,7 +340,7 @@ Una vez que Gitea está operando a través de Apache con SSL, el puerto 3000 no 
 # Cerrar el puerto que abrimos para la instalación
 sudo ufw delete allow 3000/tcp
 
-# Verificar el estado — solo deben aparecer 22, 80 y 443
+# Verificar el estado — solo deben aparecer 22, 80 y 443. Si tienes Flask 5000 o 5006
 sudo ufw status
 ```
 
