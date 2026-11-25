@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Licencia MIT
-# Alfonso Orozco Aguilar
+# Alfonso Orozco Aguilar 24 / nov / 2026
 # Monitor de sistema en Python + Flask (puerto 5000)
 # NO ES PARA TERMINAL
 
