@@ -87,8 +87,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     <div class="container py-5">
         <div class="row mb-4 text-center">
             <div class="col">
-                <h1 class="display-4 font-weight-bold"><i class="fas fa-server mr-3"></i>Vibecoding Monitor</h1>
-                <p class="lead text-muted">Prueba de servidor temporal en Vultr</p>
+                <h1 class="display-4 font-weight-bold"><i class="fas fa-server mr-3"></i>Server Monitor</h1>
+                <p class="lead text-muted">Prueba de servidor python</p>
             </div>
         </div>
 
